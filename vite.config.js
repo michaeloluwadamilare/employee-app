@@ -11,4 +11,9 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+
+    server: {
+        // Define the base directory from which Vite serves files
+        base: './public',
+      },
 });
