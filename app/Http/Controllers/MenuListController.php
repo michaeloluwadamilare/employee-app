@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 use App\Models\MenuList;
-use Illuminate\Http\Request;
+
 
 class MenuListController extends Controller
 {
@@ -12,8 +13,8 @@ class MenuListController extends Controller
      */
     public function index()
     {
-        $menuLists = MenuList::all();
-        return view('menu_lists.index', compact('menuLists'));
+        $menuLists=MenuList::all();
+        return view('admin.menu', compact('menuLists'));
     }
 
     /**

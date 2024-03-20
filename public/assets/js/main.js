@@ -342,7 +342,7 @@ var readMoreElements = document.querySelectorAll('.read-more');
 readMoreElements.forEach(function(element, index) {
 
     element.addEventListener('click', function() {
-      
+
         var modal = document.getElementById('modal');
         var orderItem = element.closest('.summary-content');
 

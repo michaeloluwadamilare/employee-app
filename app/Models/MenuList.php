@@ -11,8 +11,11 @@ class MenuList extends Model
 
     protected $fillable = ['name', 'description', 'status', 'amount', 'category_id'];
 
+    
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
+
 }

@@ -161,14 +161,13 @@ use Illuminate\Support\Str;
             </div>
 
             <div class="card-body">
-    <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+        <h5 class="card-title">Recent Sales <span>| Today</span></h5>
     
-    @foreach ($orders as $order)
-    {{$order->id}}
-        <div class="summary-content order-item">
-            <h5>{{ $order->table_no }} <span class="status badge bg-warning">{{ $order->status }}</span></h5>
-            <p class="timestamp">{{ $order->created_at }}</p>
-            
+        @foreach ($orders as $order)
+              <div class="summary-content order-item">
+                  <h5>{{ $order->table_no }} <span class="status badge bg-warning">{{ $order->status }}</span></h5>
+                  <p class="timestamp">{{ $order->created_at }}</p>
+                  
             <div class="ordersummary">
 
                 @foreach ($order['orderDetails'] as $detail)
