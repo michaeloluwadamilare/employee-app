@@ -34,17 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
+    Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+    Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
     Route::get('/menu', [MenuListController::class, 'index'])->name('menu');
+    Route::post('/menu', [MenuListController::class, 'store'])->name('menu.store');
+
 
 });
-
-// Route::get('/menu', function() {
-//     return view('admin.menu');
-// });
-
-// Route::get('/menu', function () {
-//     $menuListController = new MenuListController();
-//     return $menuListController->index();
-// });
 
 require __DIR__.'/auth.php';

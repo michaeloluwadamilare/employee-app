@@ -34,7 +34,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the incoming request data
+        $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name'
+        ]);
+
+        $category = new Category();
+        $category->name = $request->name;
+
+        $category->save();
+
+        return redirect()->route('categories.create')->with('success', 'Category added successfully!');
     }
 
     /**
@@ -58,7 +68,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name,' . $category->id
+        ]);
+
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect()->route('categories.index', $category->id)->with('success', 'Category updated successfully!');
     }
 
     /**

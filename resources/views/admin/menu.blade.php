@@ -1,5 +1,3 @@
-use Illuminate\Support\Str;
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -36,6 +34,11 @@ use Illuminate\Support\Str;
             </div>
         </div>
         <div class="card-body">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
           <h5 class="card-title">Menu List</h5>
           <p>Here is your menu list, search for menu, view, hide and edit.</p>
 
@@ -45,9 +48,9 @@ use Illuminate\Support\Str;
               <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Status</th>
                 <th>Amount</th>
                 <th>Category</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -57,6 +60,8 @@ use Illuminate\Support\Str;
               <tr>
                 <td>{{$list->name}}</td>
                 <td>{{$list->description}}</td>
+                <td>{{$list->amount}}</td>
+                <td>{{$list->category->name}}</td>
                 <td>
                   @if ($list->status == 'Active')
                       <label class="badge bg-success">{{ $list->status }}</label>
@@ -64,10 +69,7 @@ use Illuminate\Support\Str;
                       <label class="badge bg-danger">{{ $list->status }}</label>
                   @endif
                 </td>
-                <td>{{$list->amount}}</td>
-                <td>{{$list->category->name}}</td>
                 <td>
-                  <a href="" class="bi bi-eye-slash-fill btn btn-primary btn-sm"></a>
                   <a href="" class="bi bi-pencil-square btn btn-info btn-sm"></a>
                   <a href="" class="bi bi-trash btn btn-danger btn-sm"></a>
                 </td>

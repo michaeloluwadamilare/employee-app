@@ -1,5 +1,3 @@
-use Illuminate\Support\Str;
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -32,10 +30,16 @@ use Illuminate\Support\Str;
       <div class="card">
         <div class="card-header">
             <div class="card-toolbar">
-                <button class="btn btn-info bi bi-plus btn-sm">Add Category</button>
+                <button class="btn btn-info bi bi-plus btn-sm ">Add Category</button>
             </div>
         </div>
         <div class="card-body">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
           <h5 class="card-title">Category List</h5>
           <p>Here is your Category list, search for Category, view, hide and edit.</p>
 
@@ -52,7 +56,6 @@ use Illuminate\Support\Str;
               <tr>
                 <td>{{$v_category->name}}</td>
                 <td>
-                  <a href="" class="bi bi-eye-slash-fill btn btn-primary btn-sm"></a>
                   <a href="" class="bi bi-pencil-square btn btn-info btn-sm"></a>
                   <a href="" class="bi bi-trash btn btn-danger btn-sm"></a>
                 </td>

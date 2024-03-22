@@ -13,7 +13,7 @@ class MenuListController extends Controller
      */
     public function index()
     {
-        $menuLists = MenuList::with('category')->get();
+        $menuLists = MenuList::with('category')->orderBy('category_id')->get();
 
         return view('admin.menu', compact('menuLists'));
     }
