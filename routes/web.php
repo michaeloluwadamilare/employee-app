@@ -19,10 +19,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/mint', function () {
     return view('EndUser.mint');
 });
 

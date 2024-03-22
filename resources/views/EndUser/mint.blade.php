@@ -47,6 +47,7 @@
 
     
 <div class=" container text-white mt-5" id="home">
+    <div class="mb-2" > <img src="{{ asset('assets/img/mint_vector_white.png') }}" width="200px" alt=""></div> 
     <h1 class="text-large fs-1 lh-lg " id="hometext">
         MINT
         <br>
