@@ -16,12 +16,11 @@ use Illuminate\Support\Str;
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Data Tables</h1>
+  <h1>Menu</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-      <li class="breadcrumb-item">Tables</li>
-      <li class="breadcrumb-item active">Data</li>
+      <li class="breadcrumb-item"><a href="{{'dashboard'}}">Dashboard</a></li>
+      <li class="breadcrumb-item active">Menu List</li>
     </ol>
   </nav>
 </div><!-- End Page Title -->
@@ -31,6 +30,11 @@ use Illuminate\Support\Str;
     <div class="col-lg-12">
 
       <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar">
+                <button class="btn btn-info bi bi-plus btn-sm">Add Menu</button>
+            </div>
+        </div>
         <div class="card-body">
           <h5 class="card-title">Menu List</h5>
           <p>Here is your menu list, search for menu, view, hide and edit.</p>
@@ -39,9 +43,7 @@ use Illuminate\Support\Str;
           <table class="table datatable">
             <thead>
               <tr>
-                <th>
-                  <b>N</b>ame
-                </th>
+                <th>Name</th>
                 <th>Description</th>
                 <th>Status</th>
                 <th>Amount</th>
@@ -55,13 +57,19 @@ use Illuminate\Support\Str;
               <tr>
                 <td>{{$list->name}}</td>
                 <td>{{$list->description}}</td>
-                <td>{{$list->status}}</td>
-                <td>{{$list->amount}}</td>
-                <td>{{$list->category_id}}</td>
                 <td>
-                  <a href="" class="bi bi-eye-slash-fill"></a>
-                  <a href="" class="bi bi-pencil-square"></a>
-                  <a href="" class="bi bi-trash"></a>
+                  @if ($list->status == 'Active')
+                      <label class="badge bg-success">{{ $list->status }}</label>
+                  @else
+                      <label class="badge bg-danger">{{ $list->status }}</label>
+                  @endif
+                </td>
+                <td>{{$list->amount}}</td>
+                <td>{{$list->category->name}}</td>
+                <td>
+                  <a href="" class="bi bi-eye-slash-fill btn btn-primary btn-sm"></a>
+                  <a href="" class="bi bi-pencil-square btn btn-info btn-sm"></a>
+                  <a href="" class="bi bi-trash btn btn-danger btn-sm"></a>
                 </td>
               </tr>
             @endforeach
