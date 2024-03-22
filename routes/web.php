@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/mint', function () {
+    return view('EndUser.mint');
+});
+
 Route::get('/dashboard', function () {
     $dashboardController = new dashboardController();
     return $dashboardController->index();
