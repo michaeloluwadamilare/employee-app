@@ -39,12 +39,20 @@ use Illuminate\Support\Str;
             <thead>
               <tr>
                 <th>Category</th>
-                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-            
+            @foreach ($categories as $v_category)
+              <tr>
+                <td>{{$v_category->name}}</td>
+                <td>
+                  <a href="" class="bi bi-eye-slash-fill"></a>
+                  <a href="" class="bi bi-pencil-square"></a>
+                  <a href="" class="bi bi-trash"></a>
+                </td>
+              </tr>
+            @endforeach
 
             </tbody>
           </table>

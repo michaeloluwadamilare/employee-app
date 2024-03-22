@@ -57,6 +57,11 @@ use Illuminate\Support\Str;
                 <td>{{$list->status}}</td>
                 <td>{{$list->amount}}</td>
                 <td>{{$list->category_id}}</td>
+                <td>
+                  <a href="" class="bi bi-eye-slash-fill"></a>
+                  <a href="" class="bi bi-pencil-square"></a>
+                  <a href="" class="bi bi-trash"></a>
+                </td>
               </tr>
             @endforeach
             </tbody>
