@@ -105,7 +105,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="{{ route('profile.edit') }}" >
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
@@ -131,13 +131,6 @@
           <span>Register</span>
         </a>
       </li><!-- End Register Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-error-404.html">
