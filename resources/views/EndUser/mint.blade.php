@@ -1,82 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mint Lounge</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/3f6adae92c.js" crossorigin="anonymous"></script>
-        <link href="{{ asset('assets/css/mint.css') }}" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mint Lounge</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/3f6adae92c.js" crossorigin="anonymous"></script>
+    <link href="{{ asset('assets/css/mint.css') }}" rel="stylesheet">
 
-    </head>
-    <body class="bg-dark text-white">
+      <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-        <header>
-    
-    
-            <nav class="navbar navbar-expand-lg navbar-light p-5">
-                
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav h3">
-                        <li class="nav-item active mr-5">
-                            <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item mr-5">
-                            <a class="nav-link text-white" href="#">Menu</a>
-                        </li>
-                        <li class="nav-item mr-5">
-                            <a class="nav-link text-white" href="#">About Us</a>
-                        </li>
-                        <li class="nav-item mr-5">
-                            <a class="nav-link text-white" href="#">Policy</a>
-                        </li>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-                    </ul>
-                </div>
-                <div>
-                    <span class="badge rounded-pill bg-primary position-absolute" id="badge">5</span>        
-                    <a class="navbar-brand btn btn-lg btn-light rounded-pill px-3" href="#">Tray <i class="fas fa-hamburger"></i><i class="fas fa-cocktail"></i></a>
-                
-                </div>
-            </nav>
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-        
-            <div class=" container text-white mt-5" id="home">
-                <div class="mb-2" > <img src="{{ asset('assets/img/mint_vector_white.png') }}" width="200px" alt=""></div> 
-                <h1 class="text-large fs-1 lh-lg " id="hometext">
-                    MINT
-                    <br>
-                    RESTAURANT
-                    <br>
-                    AND BAR
-                </h1>
-                <h3>Menu and Ordering Made Easy</h3>
-                
-            </div>
-        </header>
+    <!-- Template Main CSS File -->
+    <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
+
+</head>
+<body class="bg-dark text-white">
+
+<header id="header" class="fixed-top d-flex align-items-center">
+
+<div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+
+    <!-- <h1 class="logo me-auto me-lg-0"><a href="#">Mint Bar and Resturant</a></h1> -->
+
+    <nav id="navbar" class="navbar order-last order-lg-0">
+    <ul>
+        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+        <li><a class="nav-link scrollto" href="#about">About</a></li>
+        <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
+        <li><a class="nav-link scrollto" href="#specials">Specials</a></li>
+        <li><a class="nav-link scrollto" href="#events">Events</a></li>
+        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+    <a href="#" class="action-table-btn fas fa-cocktail d-none d-lg-flex text-decoration-none">Tray</a>
+    <a href="#" class="action-table-btn d-none d-lg-flex text-decoration-none">My order</a>
+</div>
+</header>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+      <div class="row">
+
+        <div class="mb-2" >
+            <img src="{{ asset('assets/img/mint_vector_white.png') }}" width="200px" alt="">
+        </div> 
+            <h1 class="text-large" id="hometext">
+                MINT
+                <br>
+                RESTAURANT
+                <br>
+                AND BAR
+            </h1>
+            <h3>Menu and Ordering Made Easy</h3>
 
 
-        <footer>
-        
-            <div class="px-5 py-3 d-flex flex-wrap flex-row justify-content-between opacity-100 text-muted">
-                <div>&copy Mint Bar & Lounge</div>
-                <div class="text-white">                
-                    <a href="https://www.twitter.com/baxx_v" target="_blank" class="twitter text-white"><i class="bi-twitter"></i></a>
-                            <a href="https://instagram.com/the.baxx" target="_blank" class="instagram text-white"><i class="bi-instagram"></i></a>
-                            <a href="https://wa.me/2348179586771" class="whatsapp text-white" target="_blank"><i class="bi-whatsapp"></i></a></div>
-                <div>Created by Notionwave Technologies, {{ date('Y') }} </div>
-                
-            </div>
-        </footer>
+      </div>
+    </div>
+  </section><!-- End Hero -->
 
-        <!-- Bootstrap JS (optional, only if you need Bootstrap JavaScript features) -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
+
+<footer id="footer">
+    <div class="px-5 py-3 d-flex flex-wrap flex-row justify-content-between opacity-100">
+            <div>&copy Mint Bar & Lounge</div>
+            <div class="text-white">                
+                <a href="https://www.twitter.com/baxx_v" target="_blank" class="twitter text-white"><i class="bi-twitter"></i></a>
+                <a href="https://instagram.com/the.baxx" target="_blank" class="instagram text-white"><i class="bi-instagram"></i></a>
+                <a href="https://wa.me/2348179586771" class="whatsapp text-white" target="_blank"><i class="bi-whatsapp"></i></a></div>
+            <div>Created by Notionwave Technologies, {{ date('Y') }} </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap JS (optional, only if you need Bootstrap JavaScript features) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
