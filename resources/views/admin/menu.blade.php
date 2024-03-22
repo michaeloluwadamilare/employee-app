@@ -46,6 +46,7 @@ use Illuminate\Support\Str;
                 <th>Status</th>
                 <th>Amount</th>
                 <th>Category</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
