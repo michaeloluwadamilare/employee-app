@@ -8,7 +8,7 @@ use App\Models\OrderDetail;
 
 
 
-class dashboardController extends Controller
+class DashboardController extends Controller
 {
 public function index() {
 

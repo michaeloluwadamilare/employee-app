@@ -50,13 +50,13 @@ use Illuminate\Support\Str;
             </thead>
             <tbody>
             
-            @foreach ($menuLists as $MenuList)
+            @foreach ($menuLists as $list)
               <tr>
-                <td>{{$MenuList->name}}</td>
-                <td>{{$MenuList->description}}</td>
-                <td>{{$MenuList->status}}</td>
-                <td>{{$MenuList->amount}}</td>
-                <td>{{$MenuList->category_id}}</td>
+                <td>{{$list->name}}</td>
+                <td>{{$list->description}}</td>
+                <td>{{$list->status}}</td>
+                <td>{{$list->amount}}</td>
+                <td>{{$list->category_id}}</td>
               </tr>
             @endforeach
             </tbody>

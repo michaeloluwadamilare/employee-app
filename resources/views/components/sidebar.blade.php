@@ -22,8 +22,8 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Sub-categories</span>
+            <a href="{{'category'}}">
+              <i class="bi bi-circle"></i><span>All Categories</span>
             </a>
           </li>
           <li>
