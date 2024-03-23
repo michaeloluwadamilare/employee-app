@@ -13,8 +13,8 @@ class ClientUIController extends Controller
      */
     public function index()
     {
-        $menulists = Category::with('category')->get();
-        return view('EndUser.mint', compact('menulists'));
+        $menuList = Category::with('menuItems')->get();
+        return view('EndUser.mint', compact('menuList'));
     }
 
     /**
