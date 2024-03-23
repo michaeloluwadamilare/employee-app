@@ -6,7 +6,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/action_page.php" method="POST">
+        <form action="{{ route('category.update', ['id' => $v_category->id]) }}" method="POST">
+          @method('PUT')
+          @csrf
           <div class="container mt-3">
 
             <div class="mb-3">
@@ -27,7 +29,7 @@
           </div>
             
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-success">Submit</button>
 
           </div>
         </form>
