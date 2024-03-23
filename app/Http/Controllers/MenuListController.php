@@ -13,8 +13,10 @@ class MenuListController extends Controller
      */
     public function index()
     {
-        $menuLists = MenuList::with('category')->orderBy('category_id')->get();
-
+        $menuLists = MenuList::with('category')
+        ->whereIn('status', ['Active', 'Inactive'])
+        ->orderBy('category_id')
+        ->get();
         return view('admin.menu', compact('menuLists'));
     }
 
