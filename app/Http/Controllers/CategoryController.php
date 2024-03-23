@@ -82,11 +82,11 @@ class CategoryController extends Controller
         $category->status = $request->status;
         $category->save();
 
-        $menuItems = $category->menuLists;
+        $menuItems = MenuList::where('category_id', $id)->get();
 
-        // Update status of each menu item
+        // Update the status of each menu item
         foreach ($menuItems as $menuItem) {
-            $menuItem->status = $request->status;
+            $menuItem->status = 'Deactivate';
             $menuItem->save();
         }
 
@@ -99,11 +99,12 @@ class CategoryController extends Controller
     public function delete(string $id)
     {
         $category = Category::findOrFail($id);
-        $category->status = 'Deactivate';
+        $category->status = 'Deactivated';
         $category->save();
 
-        $menuItems = $category->menuLists;
+        $menuItems = MenuList::where('category_id', $id)->get();
 
+        // Update the status of each menu item
         foreach ($menuItems as $menuItem) {
             $menuItem->status = 'Deactivate';
             $menuItem->save();
