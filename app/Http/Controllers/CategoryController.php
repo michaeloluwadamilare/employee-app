@@ -48,7 +48,7 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('categories.create')->with('success', 'Category added successfully!');
+        return redirect()->route('category.create')->with('success', 'Category added successfully!');
     }
 
     /**
@@ -90,7 +90,7 @@ class CategoryController extends Controller
             $menuItem->save();
         }
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully!');
+        return redirect()->route('category.index')->with('success', 'Category updated successfully!');
     }
 
     /**
@@ -109,7 +109,7 @@ class CategoryController extends Controller
             $menuItem->save();
         }
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully!');
+        return redirect()->route('category.index')->with('success', 'Category deleted successfully!');
 
     }
 }
