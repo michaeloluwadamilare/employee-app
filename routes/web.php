@@ -29,10 +29,10 @@ Route::get('/dashboard', function () {
     $dashboardController = new DashboardController();
     return $dashboardController->index();
 
-Route::post('/addcart/{id}', [ClientUiController::class, 'addcart']);
-
-
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::post('/addcart/{id}', [ClientUiController::class, 'addcart']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -71,8 +71,7 @@ class ClientUIController extends Controller
      */
     public function addcart(Request $request, $id)
     {
-        
-        $m=menu_list::find($id);
+        $m=MenuList::find($id);
         $cart= new cart;
 
         $cart->product=$m->name;
