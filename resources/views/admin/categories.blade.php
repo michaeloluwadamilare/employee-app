@@ -72,7 +72,7 @@
                   </form>
                 </td>
               </tr>
-              @include('admin.editCategory')
+              @include('admin.modal.editCategory')
             @endforeach
 
             </tbody>

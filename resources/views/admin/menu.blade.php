@@ -94,7 +94,7 @@
                   </form>                
                 </td>
               </tr>
-              @include('admin.editMenu')
+              @include('admin.modal.editMenu')
             @endforeach
             </tbody>
           </table>
