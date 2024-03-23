@@ -43,6 +43,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/menu', [MenuListController::class, 'store'])->name('menu-lists.store');
     Route::put('/menu/{id}', [MenuListController::class, 'update'])->name('menu-lists.update');
     Route::delete('/menu/{id}', [MenuListController::class, 'delete'])->name('menu-lists.delete');
+
+    Route::get('/order', [OrderController::class, 'index'])->name('order');
+    Route::delete('/order/{id}', [OrderController::class, 'delete'])->name('order.delete');
+
+
 });
 
 require __DIR__.'/auth.php';

@@ -12,9 +12,10 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{'menu'}}">
-          <i class="bi bi-box-arrow-in-right"></i>
+          <i class="bi bi-menu-app"></i>
           <span>Menu</span>
-        </a><!-- End Menu Nav -->
+        </a>
+      </li><!-- End Menu Nav -->
   
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
@@ -34,6 +35,12 @@
         </ul>
       </li>
       <!-- End Category Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{'order'}}">
+          <i class="bi bi-basket"></i>
+          <span>Orders</span>
+        </a>
+      </li><!-- End Menu Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">

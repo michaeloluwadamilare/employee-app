@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MenuList;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Models\Order;
 
-class OrderController extends Controller
+class ClientUIlController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $orders = Order::orderBy('created_at')->get();
-        return view('admin.orders', compact('orders'));
-
+        $menulists = Category::with('MenuList')->get();
+        return view('EndUser.mint', compact('menulists'));
     }
 
     /**
      * Show the form for creating a new resource.
-     */ 
+     */
     public function create()
     {
         //
@@ -60,7 +60,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(string $id)
+    public function destroy(string $id)
     {
         //
     }
