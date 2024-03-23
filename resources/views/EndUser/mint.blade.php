@@ -49,8 +49,10 @@
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
-    <a href="#" class="action-table-btn fas fa-cocktail d-none d-lg-flex text-decoration-none">Tray</a>
-    <a href="#" class="action-table-btn d-none d-lg-flex text-decoration-none">My order</a>
+    <div class="actionbtn d-flex align-item-center">
+        <a href="#" class="action-table-btn fas fa-cocktail d-none d-lg-flex text-decoration-none">Tray</a>
+        <a href="#" class="action-table-btn d-none d-lg-flex text-decoration-none">My order</a>
+    </div>
 </div>
 </header>
 
@@ -70,11 +72,47 @@
                 AND BAR
             </h1>
             <h3>Menu and Ordering Made Easy</h3>
-
-
       </div>
     </div>
   </section><!-- End Hero -->
+
+
+
+
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Menu</h2>
+          <p>Check Our Tasty Menu</p>
+        </div>
+
+        @foreach(#menuList as $list)
+        <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+
+        <div class="section-title">
+          <p>{{$list->category->name}}</p>
+        </div>
+
+          <div class="col-lg-12 menu-item">
+            <!-- <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
+            <div class="menu-content"> -->
+              <a href="#">{{$list->name}}</a><span>{{$list->amount}}</span>
+            </div>
+            <div class="menu-ingredients">
+            {{$list->description}}
+            </div>
+          </div>
+
+        </div>
+        @endforeach
+      </div>
+    </section><!-- End Menu Section -->
+
+
+
+
 
 
 <footer id="footer">
