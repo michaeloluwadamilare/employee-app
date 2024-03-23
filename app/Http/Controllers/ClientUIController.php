@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MenuList;
 use App\Models\Category;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class ClientUIController extends Controller
@@ -64,4 +65,22 @@ class ClientUIController extends Controller
     {
         //
     }
+
+/**
+     * Add to cart.
+     */
+    public function addcart(Request $request, $id)
+    {
+        
+        $m=menu_list::find($id);
+        $cart= new cart;
+
+        $cart->product=$m->name;
+        $cart->price=$m->price;
+        $cart->quantity=$request->quantity;
+        $cart->save();
+
+        return redirect()->back()->with('message','Product Added Successfully');
+    }
+
 }

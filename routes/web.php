@@ -29,6 +29,9 @@ Route::get('/dashboard', function () {
     $dashboardController = new DashboardController();
     return $dashboardController->index();
 
+Route::post('/addcart/{id}', [ClientUiController::class, 'addcart']);
+
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

@@ -26,7 +26,7 @@
   
   #header.header-scrolled {
     top: 0;
-    background: rgba(107, 16, 16, 0.85);
+    background: rgba(18, 18, 18, 0.85);
     border-bottom: 1px solid #37332a;
   }
   
@@ -362,6 +362,21 @@ section {
     border-radius: 50px;
   }
   
+
+.menu .menu-bsk {
+
+    width: 70px;
+    border-radius: 50%;
+    float: right;
+}
+
+
+.menu .menu-bsk button{
+    background: #ffff;
+    border: none;
+    border-radius: 8px;
+    width: 50px;
+}
   .menu #menu-flters li {
     cursor: pointer;
     display: inline-block;
@@ -398,7 +413,7 @@ section {
   } */
   
   .menu .menu-content {
-    /* margin-left: 85px; */
+    margin-right: 85px;
     overflow: hidden;
     display: flex;
     justify-content: space-between;

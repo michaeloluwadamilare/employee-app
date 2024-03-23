@@ -18,16 +18,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">    
 
 </head>
 <body class="bg-dark text-white">
@@ -96,11 +89,22 @@
                 </div>
 
                 @foreach ($list['menuItems'] as $m)
+
                 <div class="col-lg-12 menu-item">
+
+                <div class=menu-bsk>
+                    <form action="{{url('addcart', $m->id)}}" method="POST">
+                        @csrf
+                        <input type="number" value="1" min="1" class="form-control" name="quantity" hidden>
+                        <button type="submit"><span class="bx bx-basket"></span></button>
+                    </form>
+                </div>
 
                 <div class="menu-content">
                     <a href="#">{{$m->name}}</a><span>&#8358 {{$m->amount}}</span>
                 </div>
+                
+                
 
                 <div class="menu-ingredients">
                     {{$m->description}}
@@ -133,5 +137,18 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ asset('assets/js/mint.js') }}"></script>
+
 </body>
 </html>
