@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\MenuList;
-use App\Http\Controllers\Rule;
-
 
 class MenuListController extends Controller
 {
@@ -84,20 +82,14 @@ class MenuListController extends Controller
             'status' => 'required|in:Active,Inactive,Deactivate',
             'description' => 'nullable|string',
             'amount' => 'required|numeric|min:0',
-            'category_id' => [
-                'required',
-                'exists:categories,id',
-                Rule::unique('menu_lists')->ignore($menu->id)->where(function ($query) use ($request) {
-                    return $query->where('category_id', $request->category_id);
-                }),
-            ],
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $menu->name = $request->name;
         $menu->status = $request->status;
         $menu->description = $request->description;
         $menu->amount = $request->amount;
-        $menu->category_id = $request->category;
+        $menu->category_id = $request->category_id;
 
 
         $menu->save();
