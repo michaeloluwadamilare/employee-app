@@ -16,12 +16,12 @@
 
             <div class="mb-3">
               <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" value="{{$list->name}}" placeholder="Enter Name" name="name">
+              <input type="text" class="form-control" value="{{$list->name}}" placeholder="Enter Name" name="name">
             </div>
 
             <div class="mb-3">
               <label for="description">Description</label>
-              <input type="text" class="form-control" id="description" value="{{$list->description}}" placeholder="Enter Name" name="description">
+              <textarea class="form-control" name="description">{{$list->description}}</textarea>
             </div>
 
             <div class="mb-3">

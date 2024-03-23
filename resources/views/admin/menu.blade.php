@@ -34,11 +34,27 @@
             </div>
         </div>
         <div class="card-body">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
+          @if (session('success'))
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+              <div>
+              {{ session('success') }}
+              </div>
             </div>
-        @endif
+
+          @endif
+          @if ($errors->any())
+          
+            @foreach ($errors->all() as $error)
+              <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div>
+                  {{ $error }}
+                </div>
+              </div>
+            @endforeach
+          
+          @endif
           <h5 class="card-title">Menu List</h5>
           <p>Here is your menu list, search for menu, view, hide and edit.</p>
 
