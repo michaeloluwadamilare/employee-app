@@ -86,7 +86,7 @@ class CategoryController extends Controller
 
         // Update the status of each menu item
         foreach ($menuItems as $menuItem) {
-            $menuItem->status = 'Deactivate';
+            $menuItem->status = $request->status == 'Active' ? 'Active' : 'Deactivate';
             $menuItem->save();
         }
 
