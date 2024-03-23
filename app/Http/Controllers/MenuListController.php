@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\MenuList;
+use App\Models\Category;
 
 class MenuListController extends Controller
 {
@@ -16,7 +17,9 @@ class MenuListController extends Controller
         ->whereIn('status', ['Active', 'Inactive'])
         ->orderBy('category_id')
         ->get();
-        return view('admin.menu', compact('menuLists'));
+        $categoriesList = Category::whereIn('status', ['Active', 'Inactive'])->get();
+
+        return view('admin.menu', compact('menuLists', 'categoriesList'));
     }
 
     /**

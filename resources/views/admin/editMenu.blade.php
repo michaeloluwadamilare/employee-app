@@ -13,36 +13,38 @@
         <form action="{{ route('menu-lists.update', ['id' => $list->id]) }}" method="POST">
             @method('PUT')
             @csrf
-            <div class="mb-3 mt-3">
-              <label for="id">ID:</label>
-              <input type="number" class="form-control" value="{{$list->id}}" id="id" name="id">
-            </div>
 
             <div class="mb-3">
-              <label for="name">Name:</label>
+              <label for="name">Name</label>
               <input type="text" class="form-control" id="name" value="{{$list->name}}" placeholder="Enter Name" name="name">
             </div>
 
             <div class="mb-3">
-              <label for="description">Description:</label>
+              <label for="description">Description</label>
               <input type="text" class="form-control" id="description" value="{{$list->description}}" placeholder="Enter Name" name="description">
             </div>
 
             <div class="mb-3">
-              <label for="amount">amount:</label>
-              <input type="text" class="form-control" id="amount" value="{{$list->amount}}" placeholder="Enter Name" name="amount">
+              <label for="amount">Amount</label>
+              <input type="text" class="form-control" value="{{$list->amount}}" placeholder="Enter Name" name="amount">
             </div>
 
             
 
             <div class="mb-3">
-              <label for="category_id">Category:</label>
-              <input type="text" class="form-control" id="category_id" value="{{$list->category->id}}" placeholder="Enter Name" name="category_id">
+              <label for="category_id">Category</label>
+              <select class="form-select" id="category_id" name="category_id" >
+              @foreach ($categoriesList as $cat_list)
+
+                <option value="{{ $cat_list->id }}" {{ $cat_list->id == $list->category->id ? 'selected' : '' }} >{{ $cat_list->name }}</option>
+              @endforeach
+
+              </select>
             </div>
 
             <div class="mb-3">
             <label for="status" class="form-label">Status</label>
-            <select class="form-select" id="status" name="status" >
+            <select class="form-select" name="status" >
               <option value="Active" {{ $list->status == 'Active' ? 'selected' : '' }} >Active</option>
               <option  value="Inactive"  {{ $list->status == 'Inactive' ? 'selected' : ''}}>Inactive</option>
 
