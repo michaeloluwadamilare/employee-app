@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
             'description' => 'Star lager beer',
             'amount' => '2500.00',
             'status' => 'Active',
-            'category_id' => 2
+            'category_id' => 2,
         ]);
 
         DB::table('menu_lists')->insert([
@@ -59,14 +59,14 @@ class UserSeeder extends Seeder
             'description' => '',
             'amount' => '2500.00',
             'status' => 'Active',
-            'category_id' => 2
+            'category_id' => 2,
         ]);
         DB::table('menu_lists')->insert([
             'name' => 'Trophy',
             'description' => '',
             'amount' => '2000.00',
             'status' => 'Active',
-            'category_id' => 2
+            'category_id' => 2,
         ]);
     }
 }
