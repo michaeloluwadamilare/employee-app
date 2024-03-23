@@ -83,28 +83,31 @@
     <section id="menu" class="menu section-bg">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
+        <div class="section-title text-center">
           <h2>Menu</h2>
           <p>Check Our Tasty Menu</p>
         </div>
 
-        @foreach(#menuList as $list)
+        @foreach ($menuList as $list)
         <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+                
+                <div class="section-title category-name">
+                    <p>{{$list->name}}</p>
+                </div>
 
-        <div class="section-title">
-          <p>{{$list->category->name}}</p>
-        </div>
+                @foreach ($list['menuItems'] as $m)
+                <div class="col-lg-12 menu-item">
 
-          <div class="col-lg-12 menu-item">
-            <!-- <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
-            <div class="menu-content"> -->
-              <a href="#">{{$list->name}}</a><span>{{$list->amount}}</span>
-            </div>
-            <div class="menu-ingredients">
-            {{$list->description}}
-            </div>
-          </div>
+                <div class="menu-content">
+                    <a href="#">{{$m->name}}</a><span>&#8358 {{$m->amount}}</span>
+                </div>
 
+                <div class="menu-ingredients">
+                    {{$m->description}}
+                </div>
+
+                </div>
+                @endforeach
         </div>
         @endforeach
       </div>

@@ -167,7 +167,7 @@
                   <p class="timestamp">{{ $order->created_at }}</p>
                   
             <div class="ordersummary">
-
+            {{$orders}}
                 @foreach ($order['orderDetails'] as $detail)
                     <p>{{ $detail->quantity }} - {{ $detail->product_name }},</p>
                 @endforeach
