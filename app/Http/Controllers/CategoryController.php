@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\MenuList;
+
 
 
 class CategoryController extends Controller
@@ -36,11 +38,13 @@ class CategoryController extends Controller
     {
         // Validate the incoming request data
         $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name'
+            'name' => 'required|string|max:255|unique:categories,name',
+            'status' => 'required|in:Active,Inactive,Deactivate'
         ]);
 
         $category = new Category();
         $category->name = $request->name;
+        $category->status = $request->status;
 
         $category->save();
 
@@ -75,16 +79,37 @@ class CategoryController extends Controller
         ]);
 
         $category->name = $request->name;
+        $category->status = $request->status;
         $category->save();
 
-        return redirect()->route('categories.index', $category->id)->with('success', 'Category updated successfully!');
+        $menuItems = $category->menuLists;
+
+        // Update status of each menu item
+        foreach ($menuItems as $menuItem) {
+            $menuItem->status = $request->status;
+            $menuItem->save();
+        }
+
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->status = 'Deactivate';
+        $category->save();
+
+        $menuItems = $category->menuLists;
+
+        foreach ($menuItems as $menuItem) {
+            $menuItem->status = 'Deactivate';
+            $menuItem->save();
+        }
+
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully!');
+
     }
 }

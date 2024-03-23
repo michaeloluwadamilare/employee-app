@@ -31,7 +31,26 @@ class MenuListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the incoming request data
+        $request->validate([
+            'name' => 'required|string|max:255|unique:menu_lists,name',
+            'status' => 'required|in:Active,Inactive,Deactivate',
+            'description' => 'nullable|string',
+            'amount' => 'required|numeric|min:0',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $menu = new MenuList();
+        $menu->name = $request->name;
+        $menu->status = $request->status;
+        $menu->description = $request->description;
+        $menu->amount = $request->amount;
+        $menu->category_id = $request->category_id;
+
+        $menu->save();
+
+        return redirect()->route('menu-lists.index')->with('success', 'Category added successfully!');
+
     }
 
     /**
@@ -55,14 +74,51 @@ class MenuListController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $menu = MenuList::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255|unique:menu_lists,name,' . $menu->id,
+            'status' => 'required|in:Active,Inactive,Deactivate',
+            'description' => 'nullable|string',
+            'amount' => 'required|numeric|min:0',
+            'category_id' => [
+                'required',
+                'exists:categories,id',
+                Rule::unique('menu_lists')->ignore($menu->id)->where(function ($query) use ($request) {
+                    return $query->where('category_id', $request->category_id);
+                }),
+            ],
+        ]);
+
+        $menu->name = $request->name;
+        $menu->status = $request->status;
+        $menu->description = $request->description;
+        $menu->amount = $request->amount;
+        $menu->category_id = $request->category;
+
+
+        $menu->save();
+        return redirect()->route('menu-lists.index')->with('success', 'Menu updated successfully!');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
-        //
+        $menu = MenuList::findOrFail($id);
+        $menu->status = 'Deactivate';
+        $menu->save();
+
+        $menuItems = $category->menuLists;
+
+        foreach ($menuItems as $menuItem) {
+            $menuItem->status = 'Deactivate';
+            $menuItem->save();
+        }
+
+        return redirect()->route('menu-lists.index')->with('success', 'Category deleted successfully!');
+
     }
 }
