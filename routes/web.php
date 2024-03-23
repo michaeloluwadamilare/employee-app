@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ClientUIController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\MenuListController;
 use App\Http\Controllers\CategoryController;
@@ -20,8 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('EndUser.mint');
-});
+    $clientUiController = new ClientUIController();
+    return $clientUiController->index();});
 
 Route::get('/dashboard', function () {
     $dashboardController = new DashboardController();

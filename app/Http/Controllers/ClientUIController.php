@@ -6,14 +6,14 @@ use App\Models\MenuList;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class ClientUIlController extends Controller
+class ClientUIController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $menulists = Category::with('MenuList')->get();
+        $menulists = Category::with('category')->get();
         return view('EndUser.mint', compact('menulists'));
     }
 
