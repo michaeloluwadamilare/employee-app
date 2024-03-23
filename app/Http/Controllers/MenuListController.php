@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\MenuList;
+use App\Http\Controllers\Rule;
 
 
 class MenuListController extends Controller
