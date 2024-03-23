@@ -47,7 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/menu/{id}', [MenuListController::class, 'delete'])->name('menu-lists.delete');
 
     Route::get('/order', [OrderController::class, 'index'])->name('order');
-    Route::get('/order/{id}', [OrderController::class, 'show'])->name('order.show');
     Route::delete('/order/{id}', [OrderController::class, 'delete'])->name('order.delete');
 
 });

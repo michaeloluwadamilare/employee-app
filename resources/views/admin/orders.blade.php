@@ -65,7 +65,7 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ route('order.show', $order->id) }}" class="bi bi-eye btn btn-primary btn-sm"></a>
+                    <a href="" class="bi bi-eye btn btn-primary btn-sm"></a>
                     <a href="" class="bi bi-pencil-square btn btn-info btn-sm"></a>
                     <a href="{{ route('order.delete', $order->id) }}" class="bi bi-trash btn btn-danger btn-sm" onclick="event.preventDefault(); if(confirm('This action is irreversible. Are you sure you want to delete {{$order->name}} category?')) { document.getElementById('delete-form-{{$order->id}}').submit(); }"></a>
                     <form id="delete-form-{{$order->id}}" action="{{ route('order.delete', $order->id) }}" method="POST" style="display: none;">

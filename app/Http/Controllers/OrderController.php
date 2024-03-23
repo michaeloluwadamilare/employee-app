@@ -12,7 +12,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('created_at')->get();
+        $orders = Order::with('orderDetails')->orderBy('created_at')->get();
         return view('admin.orders', compact('orders'));
 
     }
@@ -38,9 +38,8 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        $orders = Order::with('orderDetails')->findOrFail($id);
-
-        return view('admin.details', compact('orders'));
+        //
+  
     }
 
     /**
