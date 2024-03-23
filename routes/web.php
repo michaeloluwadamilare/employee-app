@@ -33,16 +33,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
     Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('/category/{id}', [CategoryController::class, 'delete'])->name('category.delete');
 
-    Route::get('/menu-lists', [MenuListController::class, 'index'])->name('menu-lists');
-    Route::post('/menu-lists', [MenuListController::class, 'store'])->name('menu-lists.store');
-    Route::put('/menu-lists/{id}', [MenuListController::class, 'update'])->name('menu-lists.update');
-    Route::delete('/menu-lists/{id}', [MenuListController::class, 'delete'])->name('menu-lists.delete');
+    Route::get('/menu', [MenuListController::class, 'index'])->name('menu-lists');
+    Route::post('/menu', [MenuListController::class, 'store'])->name('menu-lists.store');
+    Route::put('/menu/{id}', [MenuListController::class, 'update'])->name('menu-lists.update');
+    Route::delete('/menu/{id}', [MenuListController::class, 'delete'])->name('menu-lists.delete');
 });
 
 require __DIR__.'/auth.php';
