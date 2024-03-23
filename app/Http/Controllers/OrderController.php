@@ -38,7 +38,9 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $order = Order::with('orderDetails')->findOrFail($id);
+
+        return view('admin.orderDetail', compact('order'));
     }
 
     /**

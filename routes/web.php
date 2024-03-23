@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ClientUIController;
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\MenuListController;
 use App\Http\Controllers\CategoryController;
 
@@ -46,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/menu/{id}', [MenuListController::class, 'delete'])->name('menu-lists.delete');
 
     Route::get('/order', [OrderController::class, 'index'])->name('order');
+    Route::get('/order/{id}', [OrderController::class, 'show'])->name('order.show');
     Route::delete('/order/{id}', [OrderController::class, 'delete'])->name('order.delete');
 
 });
