@@ -74,5 +74,45 @@ class DatabaseSeeder extends Seeder
             'status' => 'Active',
             'category_id' => 2,
         ]);
+
+        DB::table('order_details')->insert([
+            'order_id'=>'1',
+            'product_name' => 'Grilled Fish And Chips (Croaker/Cat)',
+            'quantity'=>'2' ,
+            'unit_price'=>'3000.00',
+            'amount'=>'6000.00',
+        ]);
+        DB::table('order_details')->insert([
+            'order_id'=>'1',
+            'product_name' => 'Guinea Fowl Suya',
+            'quantity'=>'4' ,
+            'unit_price'=>'4000.00',
+            'amount'=>'12000.00',
+        ]);
+        DB::table('order_details')->insert([
+            'order_id'=>'2',
+            'product_name' => 'Guinea Fowl Suya',
+            'quantity'=>'1' ,
+            'unit_price'=>'4000.00',
+            'amount'=>'4000.00',
+        ]);
+        DB::table('order_details')->insert([
+            'order_id'=>'2',
+            'product_name' => 'Guinea Fowl Suya',
+            'quantity'=>'2' ,
+            'unit_price'=>'4000.00',
+            'amount'=>'8000.00',
+        ]);
+
+        DB::table('order')->insert([
+            'table_no'=>'Table 002',
+            'total_amount' => '18000.00',
+        ]);
+
+        DB::table('order')->insert([
+            'table_no'=>'Table 007',
+            'total_amount' => '12000.00',
+        ]);
     }
 }
+
