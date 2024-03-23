@@ -49,7 +49,7 @@ class MenuListController extends Controller
 
         $menu->save();
 
-        return redirect()->route('menu-lists.index')->with('success', 'Category added successfully!');
+        return redirect()->route('menu-lists')->with('success', 'Category added successfully!');
 
     }
 
@@ -98,7 +98,7 @@ class MenuListController extends Controller
 
 
         $menu->save();
-        return redirect()->route('menu-lists.index')->with('success', 'Menu updated successfully!');
+        return redirect()->route('menu-lists')->with('success', 'Menu updated successfully!');
 
     }
 
@@ -111,14 +111,7 @@ class MenuListController extends Controller
         $menu->status = 'Deactivate';
         $menu->save();
 
-        $menuItems = $category->menuLists;
-
-        foreach ($menuItems as $menuItem) {
-            $menuItem->status = 'Deactivate';
-            $menuItem->save();
-        }
-
-        return redirect()->route('menu-lists.index')->with('success', 'Category deleted successfully!');
+        return redirect()->route('menu-lists')->with('success', 'Menu deleted successfully!');
 
     }
 }
