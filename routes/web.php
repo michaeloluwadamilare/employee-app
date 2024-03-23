@@ -48,7 +48,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/order', [OrderController::class, 'index'])->name('order');
     Route::delete('/order/{id}', [OrderController::class, 'delete'])->name('order.delete');
 
-
 });
 
 require __DIR__.'/auth.php';
