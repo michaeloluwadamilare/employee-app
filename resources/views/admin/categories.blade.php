@@ -64,7 +64,7 @@
                   @endif
                 </td>
                 <td>
-                  <a href="" class="bi bi-pencil-square btn btn-info btn-sm"></a>
+                  <button class="bi bi-pencil-square btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{$v_category->id}}"></button>
                   <a href="{{ route('menu-lists.delete', $v_category->id) }}" class="bi bi-trash btn btn-danger btn-sm" onclick="event.preventDefault(); if(confirm('This action is irreversible. Are you sure you want to delete {{$v_category->name}} category?')) { document.getElementById('delete-form-{{$v_category->id}}').submit(); }"></a>
                   <form id="delete-form-{{$v_category->id}}" action="{{ route('category.delete', $v_category->id) }}" method="POST" style="display: none;">
                       @csrf
@@ -72,6 +72,7 @@
                   </form>
                 </td>
               </tr>
+              @include('admin.editCategory')
             @endforeach
 
             </tbody>

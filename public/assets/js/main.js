@@ -382,3 +382,15 @@ window.onclick = function(event) {
 
 
 })();
+
+    function getMenu() {
+        var button = document.getElementById('modalo')
+    // Extract value from data-value attribute
+    var data = button.getAttribute('data-value')
+    document.getElementById('id').value = data
+    // Update modal content
+    // var modalValueContainer = exampleModal.querySelector('#modalValue')
+    // modalValueContainer.textContent = 'Value: ' + value
+  
+    }
+   
