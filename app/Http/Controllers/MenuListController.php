@@ -53,7 +53,7 @@ class MenuListController extends Controller
 
         $menu->save();
 
-        return redirect()->route('menu-lists')->with('success', 'Category added successfully!');
+        return redirect()->route('menu-lists')->with('success', 'Menu added successfully!');
 
     }
 

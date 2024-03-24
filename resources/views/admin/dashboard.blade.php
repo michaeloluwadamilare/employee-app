@@ -181,7 +181,6 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <p id="modal-content"></p>
-        <button id="edit-button">Edit</button>
     </div>
 </div>
 
