@@ -379,8 +379,6 @@ window.onclick = function(event) {
     }
 }
 
-
-
 })();
 
     function getMenu() {

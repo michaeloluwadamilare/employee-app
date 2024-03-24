@@ -808,14 +808,26 @@ label.badges.bg-danger {
 
 }
 
+label.badges.bg-info {
+  padding: 2px 15px;
+  border: 1px solid yellow;
+  color: yellow;
+  background-color: white !important;
+  border-radius: 20px;
+
+}
+
 /* Filter dropdown */
-.dashboard .filter {
+.dashboard .filters {
   position: absolute;
   right: 0px;
   top: 15px;
 }
 
-.dashboard .filter .icon {
+
+
+.dashboard .filter .icon,
+.dashboard .filters .icon {
   color: #aab7cf;
   padding-right: 20px;
   padding-bottom: 5px;
@@ -824,15 +836,20 @@ label.badges.bg-danger {
 }
 
 .dashboard .filter .icon:hover,
-.dashboard .filter .icon:focus {
+.dashboard .filter .icon:focus,
+.dashboard .filters .icon:focus,
+.dashboard .filters .icon:hover
+ {
   color: #d9ba85;
 }
 
-.dashboard .filter .dropdown-header {
+.dashboard .filter .dropdown-header,
+.dashboard .filters .dropdown-header {
   padding: 8px 15px;
 }
 
-.dashboard .filter .dropdown-header h6 {
+.dashboard .filter .dropdown-header h6,
+.dashboard .filters .dropdown-header h6 {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 600;
@@ -842,7 +859,8 @@ label.badges.bg-danger {
   padding: 0;
 }
 
-.dashboard .filter .dropdown-item {
+.dashboard .filter .dropdown-item,
+.dashboard .filters .dropdown-item {
   padding: 8px 15px;
 }
 

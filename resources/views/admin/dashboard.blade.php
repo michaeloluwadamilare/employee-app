@@ -35,7 +35,7 @@
         <div class="col-xxl-4 col-md-6">
           <div class="card info-card sales-card">
 
-            <div class="filter">
+            <div class="filters" >
               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <li class="dropdown-header text-start">
@@ -70,7 +70,7 @@
         <div class="col-xxl-4 col-md-6">
           <div class="card info-card revenue-card">
 
-            <div class="filter">
+            <div class="filters">
               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <li class="dropdown-header text-start">
@@ -106,7 +106,7 @@
 
           <div class="card info-card customers-card">
 
-            <div class="filter">
+            <div class="filters">
               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <li class="dropdown-header text-start">
@@ -137,54 +137,72 @@
           </div>
 
         </div><!-- End Customers Card -->
+      
+      </div>
+    </div>
 
-        <!-- Recent Sales -->
-        <div class="col-12">
-          <div class="card recent-sales overflow-auto">
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+        
+        <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Recent Order Rquest</h5>
 
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
+          <table class="table datatable">
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
+          <thead >
+              <tr>
+                <th>Table Number</th>
+                <th>Description</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
 
-            <div class="card-body">
-              <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-    
-              @foreach ($orders as $order)
-              <div class="summary-content order-item">
-                  <h5>{{ $order->table_no }} <span class="status badge bg-warning">{{ $order->status }}</span></h5>
-                  <p class="timestamp">{{ $order->created_at }}</p>
-                  
-                <div class="ordersummary">
+            <tbody>
+            @foreach ($orders as $order)
+              <tr>
+              <td>{{ $order->table_no }}</td>
+              <td>
                   @foreach ($order['orderDetails'] as $detail)
-                      <p>{{ $detail->quantity }} - {{ $detail->product_name }},</p>
-                  @endforeach
-                </div>
-              <br>
-              <span class="read-more">Read more</span>
-            
-                  <hr>
-              @endforeach
-          </div>
+                        <p>{{ $detail->quantity }} - {{ $detail->product_name }},</p>
+                    @endforeach
+              </td>
+              <td>&#8358 {{ $order->total_amount }}</td>
+              <td>
+                  @if ($order->status == 'Paid')
+                      <label class="badges bg-success">{{ $order->status }}</label>
+                  @elseif ($order->status == 'Abandoned')
+                      <label class="badges bg-danger">{{ $order->status }}</label>
+                  @else
+                      <label class="badges bg-info">{{ $order->status }}</label>
+                  @endif
+              </td>
+              <td>
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Filter</h6>
+                      </li>
 
-        </div><!-- End Recent Sales -->
-
-        <!-- start modal -->
-        <div class="modal" id="modal">
-              <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <p id="modal-content"></p>
-              </div>
-        </div><!-- End Modal -->
-
+                      <li><a class="dropdown-item" href="#">Accepted</a></li>
+                      <li><a class="dropdown-item" href="#">Declined</a></li>
+                      <li><a class="dropdown-item" href="#">Canceled</a></li>
+                    </ul>
+                  </div>
+              </td>
+              </tr>
+            @endforeach
+            </tbody>
+          </table>
+        </div>
+        </div>
+        </div>
+      </div>
+    </section>
   
 
       </div><!-- End Row class Left side columns -->
