@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="menu-content">
-                    <a href="#">{{$m->name}}</a><span>&#8358 {{$m->amount}}</span>
+                    <a href="#">{{$m->name}}</a><span>&#8358 {{ number_format($m->amount, 2) }}</span>
                 </div>
                 
                 
