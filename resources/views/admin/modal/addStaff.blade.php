@@ -19,6 +19,8 @@
             <div class="mb-3">
               <label for="job_description">Job Description</label>
               <input type="text" class="form-control" name="job_description"/>
+              <input type="hidden" class="form-control" name="password"/>
+
             </div>
 
             <div class="mb-3">
@@ -32,8 +34,9 @@
               <div class="col-sm-6">
                 <label for="role_id">Role</label>
                 <select class="form-select" id="role_id" name="role_id" >
-                
-                  <option value="2">Fix This</option>
+                    @foreach($roleList as $v_role)
+                      <option value="{{ $v_role->id }}">{{$v_role->role_name}}</option>
+                    @endforeach
                 </select>
               </div>
 

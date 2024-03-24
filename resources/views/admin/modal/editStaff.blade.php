@@ -30,9 +30,10 @@
               
               <div class="col-sm-6">
                 <label for="role_id">Role</label>
-                <select class="form-select" id="role_id" name="role_id" >
-                
-                  <option value="2">Fix This</option>
+                <select class="form-select" id="role_id" name="roles_id" >
+                    @foreach($roleList as $v_role)
+                      <option value="{{ $v_role->id }}" {{ $v_role->id == $staff->roles_id ? 'selected' : '' }} >{{$v_role->role_name}}</option>
+                    @endforeach
                 </select>
               </div>
 

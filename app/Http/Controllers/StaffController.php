@@ -15,7 +15,7 @@ class StaffController extends Controller
     {
         $staffList = DB::table('users')
             ->join('roles', 'users.roles_id', '=', 'roles.id')
-            ->select('users.*', 'roles.role_name')
+            ->select('users.*', 'roles.role_name', 'roles.id')
             ->get();
         $roleList = Role::all();
         return view('admin.staff', compact('staffList','roleList'));
