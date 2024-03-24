@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('job_description');
             $table->enum('status', ['Active','Deactivated'])->default('Active');
+            $table->foreignId('roles_id')->constrained('roles')->onDelete('cascade');
 
         });
     }
@@ -26,6 +27,8 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('job_description');
             $table->dropColumn('status');
+            $table->dropForeign(['roles_id']);
+            $table->dropColumn('roles_id');
         });
     }
 };
