@@ -21,4 +21,18 @@ class StaffController extends Controller
         return view('admin.staff', compact('staffList','roleList'));
 
     }
+    public function store(Request $request)
+    {
+        
+
+        return redirect()->route('staff-lists')->with('success', 'Staff added successfully and default password is 1234!');
+
+    }
+    public function update(Request $request, string $id)
+    {
+        
+        return redirect()->route('staff-lists')->with('success', 'Staff data updated successfully!');
+
+    }
+
 }
