@@ -70,14 +70,35 @@ class ClientUIController extends Controller
      * Add to cart.
      */
     public function addcart(Request $request, $id)
-    {
-        $m=MenuList::find($id);
-        $cart= new cart;
+    {   
 
-        $cart->product=$m->name;
-        $cart->price=$m->price;
-        $cart->quantity=$request->quantity;
-        $cart->save();
+        $m=MenuList::find($id);
+        // $cart= new cart;
+
+        // $cart->product=$m->name;
+        // $cart->price=$m->price;
+        // $cart->quantity=$request->quantity;
+        // $cart->save();
+
+        // $request->session()->forget("cart");
+
+        $cart =[
+                "product"=>$m->name,
+                "price"=>$m->price,
+                "quantity"=>$request->quantity,
+        ];
+
+        if(
+            $request->session()->has("cart")
+        ){
+            $previouscart = $request->session()->get("cart");
+            $newcart = array_push($previouscart, $cart);
+            $request->session()->put("cart", $previouscart);
+        }
+        else{
+            $request->session()->put("cart", array($cart));
+        }
+       
 
         return redirect()->back()->with('message','Product Added Successfully');
     }
