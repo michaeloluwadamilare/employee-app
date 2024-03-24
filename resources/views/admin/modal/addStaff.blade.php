@@ -10,7 +10,7 @@
 
           <div class="container mt-2">
             @csrf
-
+            @method('PUT')
             <div class="mb-3">
               <label for="name">Name</label>
               <input type="text" class="form-control" value="" placeholder="Enter Name" name="name">
@@ -19,8 +19,6 @@
             <div class="mb-3">
               <label for="job_description">Job Description</label>
               <input type="text" class="form-control" name="job_description"/>
-              <input type="hidden" class="form-control" name="password"/>
-
             </div>
 
             <div class="mb-3">
