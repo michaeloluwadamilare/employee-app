@@ -30,15 +30,12 @@
       <div class="card">
         <div class="card-header">
             <div class="card-toolbar">
-                <button class="btn btn-info bi bi-plus btn-sm ">Add Category</button>
+                <button class="btn btn-info bi bi-plus btn-sm" id="addmodal" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
             </div>
         </div>
+        @include('admin.modal.addCategory')
         <div class="card-body">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+          @include('admin.alert')
 
           <h5 class="card-title">Category List</h5>
           <p>Here is your Category list, search for Category, view, hide and edit.</p>
