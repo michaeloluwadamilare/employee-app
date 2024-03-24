@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/order/{id}', [OrderController::class, 'delete'])->name('order.delete');
 
     Route::get('/staff', [StaffController::class, 'index'])->name('staff-lists');
+    Route::post('/staff', [StaffController::class, 'store'])->name('staff-lists.store');
     Route::put('/staff/{id}', [StaffController::class, 'update'])->name('staff-lists.update');
 
     Route::get('/role', [RolesController::class, 'index'])->name('role');

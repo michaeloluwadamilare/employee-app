@@ -10,6 +10,7 @@
 
           <div class="container mt-2">
             @csrf
+            @method('PUT')
 
             <div class="mb-3">
               <label for="name">Name</label>
