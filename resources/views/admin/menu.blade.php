@@ -58,7 +58,7 @@
               <tr>
                 <td>{{$list->name}}</td>
                 <td>{{$list->description}}</td>
-                <td>{{$list->amount}}</td>
+                <td>{{number_format($list->amount,2)}}</td>
                 <td>{{$list->category->name}}</td>
                 <td>
                   @if ($list->status == 'Active')
