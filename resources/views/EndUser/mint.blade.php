@@ -43,16 +43,21 @@
     <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
 
-    @if(Session::has('cart'))
-    {{ count(Session::get('cart')) }}
-    @endif
 
     <div class="actionbtn d-flex align-item-center">
-        <a href="#" class="action-table-btn fas fa-cocktail d-none d-lg-flex text-decoration-none">Tray</a>
+        <a href="{{url('openCartModal')}}" id="openCartModal" class="action-table-btn fas fa-cocktail d-none d-lg-flex text-decoration-none" data-bs-toggle="modal" data-bs-target="#traymodal">Tray
+        </a>
+        <span class="badge badge-number">
+          @if(Session::has('cart'))
+          {{ count(Session::get('cart')) }}
+          @endif
+        </span> 
         <a href="#" class="action-table-btn d-none d-lg-flex text-decoration-none">My order</a>
     </div>
 </div>
 </header>
+
+@include('EndUser.modal.tray')
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">

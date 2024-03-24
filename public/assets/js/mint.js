@@ -276,5 +276,37 @@
         mirror: false
       })
     });
-  
+
+/**
+     * Tray modal
+     */
+
+  document.addEventListener('DOMContentLoaded', function() {
+  var traymodal = document.getElementById('traymodal');
+  var openCartModal = document.getElementById('openCartModal');
+  var closeModalBtn = document.getElementById('Modal');
+
+  // Check if the trigger element exists
+  if (openCartModal) {
+    // Open modal when the trigger element is clicked
+    openCartModal.onclick = function() {
+      traymodal.style.display = 'block';
+    }
+  }
+
+  // Close modal when the close button is clicked
+  if (closeModalBtn) {
+    closeModalBtn.onclick = function() {
+      traymodal.style.display = 'none';
+    }
+  }
+
+  // Close modal when clicked outside the modal
+  window.onclick = function(event) {
+    if (event.target == traymodal) {
+      traymodal.style.display = 'none';
+    }
+  }
+});
+
   })()
