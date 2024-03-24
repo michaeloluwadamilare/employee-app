@@ -13,7 +13,8 @@ class StaffController extends Controller
     public function index()
     {
         $staffList = User::with('roles')->get();
-        return view('admin.staff', compact('staffList'));
+        $roleList = Role::all();
+        return view('admin.staff', compact('staffList','roleList'));
 
     }
 }
