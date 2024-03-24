@@ -30,7 +30,7 @@
       <div class="card">
         <div class="card-header">
             <div class="card-toolbar">
-                <button class="btn btn-info bi bi-plus btn-sm" id="addmodal" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
+                <button class="btn btn-info btn-sm" id="addmodal" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
             </div>
         </div>
         @include('admin.modal.addCategory')
