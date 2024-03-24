@@ -55,7 +55,6 @@
             <tbody>
             
             @foreach ($staffList as $staff)
-            {{$staff}}
               <tr>
                 <td>{{$staff->name}}</td>
                 <td>{{$staff->email}}</td>
