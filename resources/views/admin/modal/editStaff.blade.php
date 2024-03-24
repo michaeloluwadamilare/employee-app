@@ -6,11 +6,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="{{ route('staff-lists.store') }}" method="POST">
+        <form action="{{ route('staff-lists.update', ['id' => $staff->id]) }}" method="POST">
 
           <div class="container mt-2">
-            @csrf
             @method('PUT')
+            @csrf
 
             <div class="mb-3">
               <label for="name">Name</label>
