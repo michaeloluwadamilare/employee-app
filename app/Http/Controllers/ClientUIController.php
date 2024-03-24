@@ -14,7 +14,9 @@ class ClientUIController extends Controller
      */
     public function index()
     {
-        $menuList = Category::with('menuItems')->get();
+        $menuList = Category::with(['menuItems' => function ($query) {
+            $query->where('status', 'Active');
+        }])->where('status', 'Active')->get();
         return view('EndUser.mint', compact('menuList'));
     }
 
