@@ -59,7 +59,7 @@
                 <td>{{$staff->name}}</td>
                 <td>{{$staff->email}}</td>
                 <td>{{$staff->job_description}}</td>
-                <td>{{$staff->role_id}}</td>
+                <td>{{$staff->role_name}}</td>
                 <td>
                   @if ($staff->status == 'Active')
                       <label class="badges bg-success">{{ $staff->status }}</label>
