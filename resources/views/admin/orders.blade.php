@@ -50,32 +50,34 @@
               </tr>
             </thead>
             <tbody>
-            @foreach ($orders as $order)
-              <tr>
-                <td>{{ $order->table_no }}</td>
-                <td>{{ $order->total_amount }}</td>  
-                <td>{{ $order->created_at }}</td>
-                <td>
-                    @if ($order->status == 'Paid')
-                        <label class="badge bg-success">{{ $order->status }}</label>
-                    @elseif( $order->status == 'Unpaid')
-                        <label class="badge bg-warning">{{ $order->status }}</label>
-                    @else
-                        <label class="badge bg-danger">{{ $order->status }}</label>
-                    @endif
-                </td>
-                <td>
-                    <a href="" class="bi bi-eye btn btn-primary btn-sm"></a>
-                    <a href="" class="bi bi-pencil-square btn btn-info btn-sm"></a>
-                    <a href="{{ route('order.delete', $order->id) }}" class="bi bi-trash btn btn-danger btn-sm" onclick="event.preventDefault(); if(confirm('This action is irreversible. Are you sure you want to delete {{$order->name}} category?')) { document.getElementById('delete-form-{{$order->id}}').submit(); }"></a>
-                    <form id="delete-form-{{$order->id}}" action="{{ route('order.delete', $order->id) }}" method="POST" style="display: none;">
-                        @csrf
-                        @method('DELETE')
-                    </form>
-                </td>
-              </tr>
-            @endforeach
+              @foreach ($orders as $order)
+                <tr>
+                  <td>{{ $order->table_no }}</td>
+                  <td>{{ number_format($order->total_amount,2) }}</td>  
+                  <td>{{ $order->created_at }}</td>
+                  <td>
+                      @if ($order->status == 'Paid')
+                          <label class="badge bg-success">{{ $order->status }}</label>
+                      @elseif( $order->status == 'Unpaid')
+                          <label class="badge bg-warning">{{ $order->status }}</label>
+                      @else
+                          <label class="badge bg-danger">{{ $order->status }}</label>
+                      @endif
+                  </td>
+                  <td class="d-flex">
+                    <button class="bi bi-eye btn btn-primary me-2 btn-sm" id="modalo" data-bs-toggle="modal" data-bs-target="#viewOrderModal{{$order->id}}"></button>
+                    <a href="" class="bi bi-pencil-square me-2 btn btn-info btn-sm"></a>
+                    <form id="delete-form-{{$order->id}}" action="{{ route('order.delete', $order->id) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm bi bi-trash" data-toggle="tooltip" title='Delete'></button>
 
+                    </form> 
+                  </td>
+                </tr>
+                @include('admin.modal.viewOrder')
+
+              @endforeach
             </tbody>
           </table>
           <!-- End Table with stripped rows -->
