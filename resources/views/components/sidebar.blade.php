@@ -104,7 +104,7 @@
 
 
 
-      <!-- <li class="nav-heading">Pages</li>
+      <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('profile.edit') }}" >
@@ -147,6 +147,6 @@
         </a>
       </li>
 
-    </ul> -->
+    </ul>
 
   </aside>
