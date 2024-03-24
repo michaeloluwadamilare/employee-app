@@ -30,10 +30,10 @@
       <div class="card">
         <div class="card-header">
             <div class="card-toolbar">
-                <button class="btn btn-info btn-sm" id="addmodal" data-bs-toggle="modal" data-bs-target="#addMenuModal" >Add Staff</button>
+                <button class="btn btn-info btn-sm" id="addmodal" data-bs-toggle="modal" data-bs-target="#addStaffModal" >Add Staff</button>
             </div>
         </div>
-        @include('admin.modal.addMenu')
+         @include('admin.modal.addStaff')
         <div class="card-body">
           @include('admin.alert')
           
@@ -46,25 +46,25 @@
               <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Job Role</th>
-                <th>User Role</th>
+                <th>Job Description</th>
+                <th>Role</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
             
-            @foreach ($staffLists as $staff)
+            @foreach ($staffList as $staff)
               <tr>
                 <td>{{$staff->name}}</td>
                 <td>{{$staff->email}}</td>
-                <td>{{$staff->job_role}}</td>
-                <td>{{$staff->user_role}}</td>
-                <td>{{$staff->status}}</td>
+                <td>{{$staff->job_description}}</td>
+                <td>{{$staff->role_id}}</td>
                 <td>
                   @if ($staff->status == 'Active')
                       <label class="badges bg-success">{{ $staff->status }}</label>
                   @else
                       <label class="badges bg-danger">{{ $staff->status }}</label>
-                  @endif
+                  @endif 
                 </td>
                 <td class="d-flex">
                   <a class="bi bi-pencil-square btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editMenuModal{{$staff->id}}" ></a>
@@ -77,7 +77,7 @@
                   </form>          
                 </td>
               </tr>
-              @include('admin.modal.editMenu')
+              <!-- include('admin.modal.editMenu') -->
             @endforeach
             </tbody>
           </table>
