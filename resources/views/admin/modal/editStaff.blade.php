@@ -1,8 +1,8 @@
-<div class="modal fade" id="addStaffModal" >
+<div class="modal fade" id="editStaffModal{{$staff->id}}" >
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" >New Staff</h5>
+        <h5 class="modal-title" >Edit Staff</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -13,22 +13,21 @@
 
             <div class="mb-3">
               <label for="name">Name</label>
-              <input type="text" class="form-control" value="" placeholder="Enter Name" name="name">
+              <input type="text" class="form-control" value="{{$staff->name}}" placeholder="Enter Name" name="name">
             </div>
 
             <div class="mb-3">
               <label for="job_description">Job Description</label>
-              <input type="text" class="form-control" name="job_description"/>
+              <input type="text" class="form-control" name="job_description" value="{{$staff->job_description}}"/>
             </div>
 
             <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" value="" placeholder="Enter Email" name="email">
+                <input type="email" class="form-control" value="{{$staff->email}}" placeholder="Enter Email" name="email">
               </div>
 
             <div class="row mb-3">
               
-
               <div class="col-sm-6">
                 <label for="role_id">Role</label>
                 <select class="form-select" id="role_id" name="role_id" >
@@ -40,9 +39,10 @@
               <div class="col-sm-6">
                 <label for="status">Status</label>
                 <select class="form-select" name="status" >
-                  <option value="Active">Active</option>
-                  <option  value="Inactive">Inactive</option>
+                  <option value="Active" {{ $staff->status == 'Active' ? 'selected' : '' }} >Active</option>
+                  <option  value="Inactive" {{ $staff->status == 'Inactive' ? 'selected' : '' }} >Inactive</option>
                 </select>
+
               </div>
 
             </div>

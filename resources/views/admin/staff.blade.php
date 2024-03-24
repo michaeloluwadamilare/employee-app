@@ -49,6 +49,7 @@
                 <th>Job Description</th>
                 <th>Role</th>
                 <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -67,7 +68,7 @@
                   @endif 
                 </td>
                 <td class="d-flex">
-                  <a class="bi bi-pencil-square btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editMenuModal{{$staff->id}}" ></a>
+                  <a class="bi bi-pencil-square btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editStaffModal{{$staff->id}}" ></a>
                   
                   <form id="delete-form-{{$staff->id}}" action="{{ route('menu-lists.delete', $staff->id) }}" method="POST">
                       @csrf
@@ -77,7 +78,7 @@
                   </form>          
                 </td>
               </tr>
-              <!-- include('admin.modal.editMenu') -->
+               @include('admin.modal.editStaff')
             @endforeach
             </tbody>
           </table>
