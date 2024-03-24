@@ -45,7 +45,7 @@
               </tr>
             </thead>
             <tbody>
-            @foreach ($roles as $v_role)
+            @foreach ($roleLists as $v_role)
               <tr>
                 <td>{{$v_role->role_name}}</td>
                 <td>{{$v_role->role_description}}</td>              

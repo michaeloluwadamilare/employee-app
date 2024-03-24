@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
         // ]);
         DB::table('roles')->insert([
             'role_name' => 'Admin',
-            'role_description' => 'System Administrator',
+            'role_description' => 'Administrator User',
             'id' => '1',
         ]);
         DB::table('roles')->insert([
             'role_name' => 'Staff',
-            'role_description' => 'General Staff',
+            'role_description' => 'General User',
             'id' => '2',
         ]);
 
