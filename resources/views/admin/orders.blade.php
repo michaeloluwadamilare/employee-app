@@ -66,7 +66,10 @@
                   </td>
                   <td class="d-flex">
                     <button class="bi bi-eye btn btn-primary me-2 btn-sm" id="modalo" data-bs-toggle="modal" data-bs-target="#viewOrderModal{{$order->id}}"></button>
-                    <a href="" class="bi bi-pencil-square me-2 btn btn-info btn-sm"></a>
+                    @if ($order->status = 'Unpaid' )
+                      <a href="" class="bi bi-pencil-square me-2 btn btn-info btn-sm"></a>
+                    @endif
+
                     <form id="delete-form-{{$order->id}}" action="{{ route('order.delete', $order->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
