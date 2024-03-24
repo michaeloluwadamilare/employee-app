@@ -55,11 +55,12 @@
             <tbody>
             
             @foreach ($staffList as $staff)
+            {{$staff}}
               <tr>
                 <td>{{$staff->name}}</td>
                 <td>{{$staff->email}}</td>
                 <td>{{$staff->job_description}}</td>
-                <td>{{$staff->role_id}}</td>
+                <td>{{$staff->roles->role_name}}</td>
                 <td>
                   @if ($staff->status == 'Active')
                       <label class="badges bg-success">{{ $staff->status }}</label>
