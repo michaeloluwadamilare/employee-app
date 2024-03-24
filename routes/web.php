@@ -7,6 +7,7 @@ use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\MenuListController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\StaffController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -50,7 +51,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/menu/{id}', [MenuListController::class, 'delete'])->name('menu-lists.delete');
 
     Route::get('/order', [OrderController::class, 'index'])->name('order');
+    Route::put('/order/{id}', [OrderController::class, 'update'])->name('order.update');
     Route::delete('/order/{id}', [OrderController::class, 'delete'])->name('order.delete');
+
+    Route::get('/staff', [StaffController::class, 'index'])->name('staff-lists');
+
 
 });
 
