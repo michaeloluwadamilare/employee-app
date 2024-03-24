@@ -30,7 +30,7 @@
       <div class="card">
         <div class="card-header">
             <div class="card-toolbar">
-                <button class="btn btn-info bi bi-plus btn-sm" id="addmodal" data-bs-toggle="modal" data-bs-target="#addMenuModal" >Add Menu</button>
+                <button class="btn btn-info btn-sm" id="addmodal" data-bs-toggle="modal" data-bs-target="#addMenuModal" >Add Menu</button>
             </div>
         </div>
         @include('admin.modal.addMenu')
@@ -67,13 +67,15 @@
                       <label class="badges bg-danger">{{ $list->status }}</label>
                   @endif
                 </td>
-                <td>
-                  <a class="bi bi-pencil-square btn btn-info btn-sm" id="modalo" data-bs-toggle="modal" data-bs-target="#editMenuModal{{$list->id}}" ></a>
-                  <a href="{{ route('menu-lists.delete', $list->id) }}" class="bi bi-trash btn btn-danger btn-sm" onclick="event.preventDefault(); if(confirm('This action is irreversible. Are you sure you want to delete {{$list->name}}?')) { document.getElementById('delete-form-{{$list->id}}').submit(); }"></a>
-                  <form id="delete-form-{{$list->id}}" action="{{ route('menu-lists.delete', $list->id) }}" method="POST" style="display: none;">
+                <td class="d-flex">
+                  <a class="bi bi-pencil-square btn btn-info btn-sm me-2" id="modalo" data-bs-toggle="modal" data-bs-target="#editMenuModal{{$list->id}}" ></a>
+                  
+                  <form id="delete-form-{{$list->id}}" action="{{ route('menu-lists.delete', $list->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
-                  </form>                
+                      <button type="submit" class="btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm bi bi-trash" data-toggle="tooltip" title='Delete'></button>
+
+                  </form>          
                 </td>
               </tr>
               @include('admin.modal.editMenu')

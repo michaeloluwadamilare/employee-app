@@ -30,7 +30,7 @@
       <div class="card">
         <div class="card-header">
             <div class="card-toolbar">
-                <button class="btn btn-info bi bi-plus btn-sm" id="addmodal" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
+                <button class="btn btn-info btn-sm" id="addmodal" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
             </div>
         </div>
         @include('admin.modal.addCategory')
@@ -60,13 +60,14 @@
                       <label class="badges bg-danger">{{ $v_category->status }}</label>
                   @endif
                 </td>
-                <td>
-                  <button class="bi bi-pencil-square btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{$v_category->id}}"></button>
-                  <a href="{{ route('menu-lists.delete', $v_category->id) }}" class="bi bi-trash btn btn-danger  btn-sm onclick="event.preventDefault(); if(confirm('This action is irreversible. Are you sure you want to delete {{$v_category->name}} category?')) { document.getElementById('delete-form-{{$v_category->id}}').submit(); }"></a>
-                  <form id="delete-form-{{$v_category->id}}" action="{{ route('category.delete', $v_category->id) }}" method="POST" style="display: none;">
+                <td class="d-flex">
+                  <button class="bi bi-pencil-square btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{$v_category->id}}"></button>
+                  <form id="delete-form-{{$v_category->id}}" action="{{ route('category.delete', $v_category->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
-                  </form>
+                      <button type="submit" class="btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm bi bi-trash" data-toggle="tooltip" title='Delete'></button>
+
+                  </form>  
                 </td>
               </tr>
               @include('admin.modal.editCategory')
