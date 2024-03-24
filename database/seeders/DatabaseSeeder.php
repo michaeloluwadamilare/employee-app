@@ -19,11 +19,32 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        DB::table('roles')->insert([
+            'role_name' => 'Admin',
+            'role_description' => 'System Administrator',
+            'id' => '1',
+        ]);
+        DB::table('roles')->insert([
+            'role_name' => 'Staff',
+            'role_description' => 'General Staff',
+            'id' => '2',
+        ]);
 
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'example@gmail.com',
             'password' => '$2y$12$5xfeJ4tfms2SxksIw0FjoucmHHIjpwLwhIaBjRqjPcMfJqutT2m/6',
+            'status' => 'Active',
+            'job_description' => 'Administrator',
+            'role_id' => '1',
+        ]);
+        DB::table('users')->insert([
+            'name' => 'John Doe',
+            'email' => 'staff@gmail.com',
+            'password' => '$2y$12$5xfeJ4tfms2SxksIw0FjoucmHHIjpwLwhIaBjRqjPcMfJqutT2m/6',
+            'status' => 'Active',
+            'job_description' => 'Waiter',
+            'role_id' => '2',
         ]);
 
         DB::table('categories')->insert([
