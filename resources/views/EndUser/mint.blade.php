@@ -42,6 +42,11 @@
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
+
+    @if(Session::has('cart'))
+    {{ count(Session::get('cart')) }}
+    @endif
+
     <div class="actionbtn d-flex align-item-center">
         <a href="#" class="action-table-btn fas fa-cocktail d-none d-lg-flex text-decoration-none">Tray</a>
         <a href="#" class="action-table-btn d-none d-lg-flex text-decoration-none">My order</a>
@@ -68,6 +73,9 @@
       </div>
     </div>
   </section><!-- End Hero -->
+
+
+
 
 
 
