@@ -57,6 +57,11 @@ class DatabaseSeeder extends Seeder
             'status' => 'Active',
         ]);
 
+        DB::table('categories')->insert([
+            'name' => 'Pasta',
+            'status' => 'Active',
+        ]);
+
         DB::table('menu_lists')->insert([
             'name' => 'Coca-Cola',
             'description' => '',
@@ -94,6 +99,13 @@ class DatabaseSeeder extends Seeder
             'amount' => '2000.00',
             'status' => 'Active',
             'category_id' => 2,
+        ]);
+        DB::table('menu_lists')->insert([
+            'name' => 'Creamy Seafood Pasta',
+            'description' => 'Pasta cooked in our secret creamy sauce with cheese and a load of Prawns. a seafood delight',
+            'amount' => '10999.00',
+            'status' => 'Active',
+            'category_id' => 3,
         ]);
         DB::table('orders')->insert([
             'table_no'=>'Table 007',
