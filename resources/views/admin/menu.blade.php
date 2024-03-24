@@ -62,13 +62,13 @@
                 <td>{{$list->category->name}}</td>
                 <td>
                   @if ($list->status == 'Active')
-                      <label class="badge bg-success">{{ $list->status }}</label>
+                      <label class="badges bg-success">{{ $list->status }}</label>
                   @else
-                      <label class="badge bg-danger">{{ $list->status }}</label>
+                      <label class="badges bg-danger">{{ $list->status }}</label>
                   @endif
                 </td>
                 <td>
-                  <button class="bi bi-pencil-square btn btn-info btn-sm" id="modalo" data-bs-toggle="modal" data-bs-target="#editMenuModal{{$list->id}}" ></button>
+                  <a class="bi bi-pencil-square btn btn-info btn-sm" id="modalo" data-bs-toggle="modal" data-bs-target="#editMenuModal{{$list->id}}" ></a>
                   <a href="{{ route('menu-lists.delete', $list->id) }}" class="bi bi-trash btn btn-danger btn-sm" onclick="event.preventDefault(); if(confirm('This action is irreversible. Are you sure you want to delete {{$list->name}}?')) { document.getElementById('delete-form-{{$list->id}}').submit(); }"></a>
                   <form id="delete-form-{{$list->id}}" action="{{ route('menu-lists.delete', $list->id) }}" method="POST" style="display: none;">
                       @csrf

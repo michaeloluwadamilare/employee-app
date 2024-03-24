@@ -4,21 +4,18 @@
             {{ __('Mint Bar and Resturant') }}
         </h2>
     </x-slot>
-
-    <div>
     
-        <aside id="sidebar" class="sidebar">
-        <ul class="sidebar-nav" id="sidebar-nav">
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
 
-        <x-sidebar />
+    <x-sidebar />
 
-        </ul>
-        </aside>
+  </ul>
+</aside>
 
-        <main id="main" class="main">
+<main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Dashboard</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -159,38 +156,40 @@
             </div>
 
             <div class="card-body">
-        <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+              <h5 class="card-title">Recent Sales <span>| Today</span></h5>
     
-        @foreach ($orders as $order)
+              @foreach ($orders as $order)
               <div class="summary-content order-item">
                   <h5>{{ $order->table_no }} <span class="status badge bg-warning">{{ $order->status }}</span></h5>
                   <p class="timestamp">{{ $order->created_at }}</p>
                   
-            <div class="ordersummary">
-                @foreach ($order['orderDetails'] as $detail)
-                    <p>{{ $detail->quantity }} - {{ $detail->product_name }},</p>
-                @endforeach
-                
-            </div><br>
-            <span class="read-more">Read more</span>
-        </div>
-        <hr>
-    @endforeach
-
-    <div class="modal" id="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p id="modal-content"></p>
-    </div>
-</div>
-
-</div>
+                <div class="ordersummary">
+                  @foreach ($order['orderDetails'] as $detail)
+                      <p>{{ $detail->quantity }} - {{ $detail->product_name }},</p>
+                  @endforeach
+                </div>
+              <br>
+              <span class="read-more">Read more</span>
+            
+                  <hr>
+              @endforeach
+          </div>
 
         </div><!-- End Recent Sales -->
 
-      </div>
-    </div><!-- End Left side columns -->
+        <!-- start modal -->
+        <div class="modal" id="modal">
+              <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p id="modal-content"></p>
+              </div>
+        </div><!-- End Modal -->
 
+  
+
+      </div><!-- End Row class Left side columns -->
+
+    </div>
   </div>
 </section>
 
