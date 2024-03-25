@@ -9,6 +9,7 @@ use App\Http\Controllers\MenuListController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\CartController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,8 @@ Route::get('/dashboard', function () {
 
 
 Route::post('/addcart/{id}', [ClientUiController::class, 'addcart']);
+Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

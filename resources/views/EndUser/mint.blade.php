@@ -49,7 +49,7 @@
         </a>
         <span class="badge badge-number">
           @if(Session::has('cart'))
-          {{ count(Session::get('cart')) }}
+          {{count(Session::get('cart'))}}
           @endif
         </span> 
         <a href="#" class="action-table-btn d-none d-lg-flex text-decoration-none">My order</a>
@@ -79,12 +79,6 @@
     </div>
   </section><!-- End Hero -->
 
-
-
-
-
-
-
     <!-- ======= Menu Section ======= -->
     <section id="menu" class="menu section-bg">
       <div class="container" data-aos="fade-up">
@@ -109,16 +103,20 @@
                     <form action="{{url('addcart', $m->id)}}" method="POST">
                         @csrf
                         <input type="number" value="1" min="1" class="form-control" name="quantity" hidden>
-                        <button type="submit"><span class="bx bx-basket"></span></button>
+
+                        <button type="submit" onclick="changeStyle()">
+                        <span class="bx bx-basket" id="badge">                        
+                        </span>
+
+                        </button>
                     </form>
                 </div>
 
                 <div class="menu-content">
-                    <a href="#">{{$m->name}}</a><span>&#8358 {{ number_format($m->amount, 2) }}</span>
+                    <a href="#">{{$m->name}}</a><span>&#8358 {{number_format($m->amount, 2) }}</span>
                 </div>
                 
                 
-
                 <div class="menu-ingredients">
                     {{$m->description}}
                 </div>
@@ -151,6 +149,26 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <script>
+      $(document).ready(function(){
+    // Click event handler for the button
+    $('#reloadButton').click(function(){
+        // AJAX call to reload the section
+        $.ajax({
+            url: "{{url('addcart', $m->id)}}", // URL of the endpoint to retrieve updated content
+            type: 'POST', // HTTP request type
+            success: function(response) {
+                // Replace the content of the section with the updated content
+                $('#reloadSection').html(response);
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+                console.error(error);
+            }
+        });
+    });
+});
+    </script>
     
     <!-- Vendor JS Files -->
     <script src="assets/vendor/aos/aos.js"></script>

@@ -72,37 +72,36 @@ class ClientUIController extends Controller
      * Add to cart.
      */
     public function addcart(Request $request, $id)
-    {   
+{
+    $m = MenuList::find($id);
 
-        $m=MenuList::find($id);
-        // $cart= new cart;
+    $cart = [
+        "id" => $m->id,
+        "product" => $m->name,
+        "price" => $m->amount, 
+        "quantity" => $request->quantity,
+        "description" => $m->description
+    ];
 
-        // $cart->product=$m->name;
-        // $cart->price=$m->price;
-        // $cart->quantity=$request->quantity;
-        // $cart->save();
+    // $request->session()->forget("cart");
 
-        // $request->session()->forget("cart");
+    // Retrieve previous cart data
+    $previouscart = $request->session()->get("cart", []);
 
-        $cart =[
-                "product"=>$m->name,
-                "price"=>$m->price,
-                "quantity"=>$request->quantity,
-        ];
-
-        if(
-            $request->session()->has("cart")
-        ){
-            $previouscart = $request->session()->get("cart");
-            $newcart = array_push($previouscart, $cart);
-            $request->session()->put("cart", $previouscart);
-        }
-        else{
-            $request->session()->put("cart", array($cart));
-        }
-       
-
-        return redirect()->back()->with('message','Product Added Successfully');
+    // Check if the product already exists in the cart
+    if (array_key_exists($m->id, $previouscart)) {
+        // Update quantity and price if product already exists
+        $previouscart[$m->id]['quantity'] += $request->quantity;
+        $previouscart[$m->id]['price'] += $m->amount;
+    } else {
+        // Add new product to the cart
+        $previouscart[$m->id] = $cart;
     }
 
+    // Save updated cart data back to session
+    $request->session()->put("cart", $previouscart);
+    // dd($request->session()->get("cart"));
+
+    return redirect()->back()->with('message', 'Product Added Successfully');
+}
 }

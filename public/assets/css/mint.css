@@ -197,13 +197,13 @@
     margin: 15px;
   }
 
-  .badge .badge-number {
+  .badge.badge-number {
     position: absolute;
-    inset: -2px -5px auto auto;
+    inset: 17px 243px auto auto;
     font-weight: normal;
     font-size: 12px;
     padding: 3px 6px;
-    background-color: #cda45e;
+    background-color: #ff0000;
 }
   
 

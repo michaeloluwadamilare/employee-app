@@ -9,38 +9,54 @@
       <div class="modal-body">
         <!-- Shopping cart content here -->
         <div class="container py-5">
+@if (Session::has('cart'))
 
-
-        <div class="card rounded-3 mb-4">
-          <div class="card-body p-4">
+        @foreach (Session::get('cart') as $key => $value)
+    <div class="card rounded-3 mb-4">
+        <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">coca cola</p>
-                <p><span class="text-muted">quantity: </span>yuyuyu <span class="text-muted">unit price: </span>6577</p>
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
+                @if (isset($value['product']))
+                    <div class="col-md-6 col-lg-6 col-xl-6">
+                        <h5 class="lead fw-normal mb-2">{{ $value['product'] }}</h5>
+                        <p><span class="text-muted">{{ $value['description'] }}</span></p>
+                    </div>
+                @else
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                        <h5 class="lead fw-normal mb-2">Product Not Found</h5>
+                    </div>
+                @endif
 
-                <input id="form1" min="1" name="quantity" value="1" type="number"
-                  class="form-control form-control-sm" />
+                @if (isset($value['quantity']))
+                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                    <input id="form1" min="1" name="quantity" value="{{ $value['quantity'] }}" type="number"
+                           class="form-control form-control-sm" />
+                </div>
+                @else
+                <h5 class="mb-0">Quantity Not Specified</h5>
+                @endif
 
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0">$499.00</h5>
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-              </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                    @if (isset($value['price']))
+                        <h5 class="mb-0">&#8358 {{ $value['price'] }}</h5>
+                    @else
+                        <h5 class="mb-0">&#8358 Price Not Found</h5>
+                    @endif
+                </div>
+
+                <form method="POST" action="{{ route('cart.delete', ['id' => $value['id']]) }}">
+                    @csrf
+                    @method('DELETE')
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                        <button type="submit" class="text-danger"><i class="fas fa-trash fa-lg"></i></button>
+                    </div>
+                </form>
+
             </div>
-          </div>
         </div>
+    </div>
+    
+@endforeach
+@endif
 
 
 
@@ -50,7 +66,6 @@
               <input type="text" id="form1" class="form-control form-control-lg" />
               <label class="form-label" for="form1">Table Number</label>
             </div>
-            <button type="button" class="btn btn-outline-warning btn-lg ms-3">Apply</button>
           </div>
         </div>
 

@@ -307,6 +307,16 @@
       traymodal.style.display = 'none';
     }
   }
+
+  
+  function changeStyle() {
+    // Get the <i> element by its id
+    var badge = document.getElementById("badge");
+  
+    // Change the style color to green
+    badge.style.color = "green";
+  }
+
 });
 
   })()
