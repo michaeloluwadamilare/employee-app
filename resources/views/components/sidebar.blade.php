@@ -129,12 +129,12 @@
         </a>
       </li>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-register.html">
           <i class="bi bi-card-list"></i>
           <span>Register</span>
         </a>
-      </li>
+      </li> -->
 
       <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-error-404.html">
