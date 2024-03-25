@@ -59,14 +59,17 @@ Route::middleware(['auth', 'deactivated'])->group(function () {
     Route::put('/order/{id}', [OrderController::class, 'update'])->name('order.update');
     Route::delete('/order/{id}', [OrderController::class, 'delete'])->name('order.delete');
 
+});
+
+Route::middleware(['auth', 'admin','deactivated'])->group(function () {
+    // Routes accessible only to administrators...
+
     Route::get('/staff', [StaffController::class, 'index'])->name('staff-lists');
     Route::post('/staff', [StaffController::class, 'store'])->name('staff-lists.store');
     Route::put('/staff/{id}', [StaffController::class, 'update'])->name('staff-lists.update');
     Route::delete('/staff/{id}', [StaffController::class, 'delete'])->name('staff-lists.delete');
-
+    
     Route::get('/role', [RolesController::class, 'index'])->name('role');
-
-
 
 
 });
