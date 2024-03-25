@@ -20,7 +20,7 @@ class RedirectIfDeactivated
         $user = Auth::user();
 
         if ($user && $user->status === 'Deactivated') {
-            Auth::logout(); // Log out the user if status is "deactivated"
+            Auth::logout();
             return redirect('/login')->with('status', 'Your account has been deactivated.');
         }
 
