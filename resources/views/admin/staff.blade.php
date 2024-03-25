@@ -70,7 +70,7 @@
                 <td class="d-flex">
                   <a class="bi bi-pencil-square btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editStaffModal{{$staff->id}}" ></a>
                   
-                  <form id="delete-form-{{$staff->id}}" action="{{ route('menu-lists.delete', $staff->id) }}" method="POST">
+                  <form id="delete-form-{{$staff->id}}" action="{{ route('staff-lists.delete', $staff->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm bi bi-trash" data-toggle="tooltip" title='Delete'></button>

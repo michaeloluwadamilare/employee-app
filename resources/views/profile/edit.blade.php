@@ -26,7 +26,7 @@
 <div class="row">
 
     <!-- Left side columns -->
-    <div class="col-lg-8">
+    <div class="col">
         <div class="row">
 
             <div class="py-12">
