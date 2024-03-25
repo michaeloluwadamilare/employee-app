@@ -29,6 +29,7 @@
           <span>Orders</span>
         </a>
       </li><!-- End Menu Nav -->
+      @if (auth()->user()->roles_id == 1 )
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
@@ -48,6 +49,7 @@
           
         </ul>
       </li>
+      @endif
       <!-- End staff Nav -->
 
       <!-- <li class="nav-item">
