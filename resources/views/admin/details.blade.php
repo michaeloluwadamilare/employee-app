@@ -38,7 +38,7 @@
         </div>
         <div class="card-body">
 
-          <form>
+          <form method="POST" action="{{ route('order.update', $order->id) }}">
             <div class="row">
               <div class="form-group col-md-6 mt-2">
                 <label for="inputEmail4">Order Table</label>
@@ -86,7 +86,7 @@
           @foreach ($order['orderDetails'] as $detail)
             <div class="card">
               <div class="card-body">
-                <form action="{{ route('order-details.update, $detail->id)}}" method="POST">
+                <form action="{{ route('order-details.update', $detail->id)}}" method="POST">
                   @method('PUT')
                   @csrf
                   <div class="row">
