@@ -60,6 +60,9 @@ Route::middleware(['auth', 'deactivated'])->group(function () {
     Route::post('/orders', [OrderController::class, 'show'])->name('orders.show');
     Route::delete('/order/{id}', [OrderController::class, 'delete'])->name('order.delete');
 
+    Route::put('/orderdetails/{id}', [OrderDetailController::class, 'update'])->name('order-details.update');
+
+
 });
 
 Route::middleware(['auth', 'admin','deactivated'])->group(function () {
