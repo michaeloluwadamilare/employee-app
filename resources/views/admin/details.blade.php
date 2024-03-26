@@ -117,8 +117,16 @@
                     </div>
 
                   </div>
-                  <button type="submit" class="btn btn-primary mt-2 float-end">Update</button>
+                  <button type="submit" class="btn btn-primary btn-sm mt-2 float-end">Update</button>
                 </form>
+                @if($order->status == 'Unpaid' && $detail->status == 'Pending' )
+                <form id="delete-form-{{$detail->id}}" action="{{ route('order.delete', $detail->id) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-sm me-2 mt-2 btn-danger btn-flat show-alert-delete-box float-end" data-toggle="tooltip" title='Delete'>Delete</button>
+
+                </form> 
+                @endif
               </div>
             </div>
           @endforeach
