@@ -86,7 +86,9 @@
           @foreach ($order['orderDetails'] as $detail)
             <div class="card">
               <div class="card-body">
-                <form>
+                <form action="{{ route('order-details.update, $detail->id)}}" method="POST">
+                  @method('PUT')
+                  @csrf
                   <div class="row">
                     <div class="form-group col-md-6 mt-2">
                       <label for="inputEmail4">Item</label>
@@ -115,7 +117,7 @@
                   <button type="submit" class="btn btn-primary btn-sm mt-2 float-end">Update</button>
                 </form>
                 @if($order->status == 'Unpaid' && $detail->status == 'Pending' )
-                <form id="delete-form-{{$detail->id}}" action="{{ route('order.delete', $detail->id) }}" method="POST">
+                <form id="delete-form-{{$detail->id}}" action="{{ route('order-details.delete', $detail->id) }}" method="POST">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-sm me-2 mt-2 btn-danger btn-flat show-alert-delete-box float-end" data-toggle="tooltip" title='Delete'>Delete</button>

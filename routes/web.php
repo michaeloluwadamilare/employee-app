@@ -61,6 +61,8 @@ Route::middleware(['auth', 'deactivated'])->group(function () {
     Route::delete('/order/{id}', [OrderController::class, 'delete'])->name('order.delete');
 
     Route::put('/orderdetails/{id}', [OrderDetailController::class, 'update'])->name('order-details.update');
+    Route::delete('/orderdetails/{id}', [OrderDetailController::class, 'delete'])->name('order-details.delete');
+
 
 
 });
