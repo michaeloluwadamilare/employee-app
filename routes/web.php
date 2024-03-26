@@ -57,7 +57,7 @@ Route::middleware(['auth', 'deactivated'])->group(function () {
 
     Route::get('/order', [OrderController::class, 'index'])->name('order');
     Route::put('/order/{id}', [OrderController::class, 'update'])->name('order.update');
-    Route::get('/order/{id}', [OrderController::class, 'show'])->name('order.show');
+    Route::post('/orders', [OrderController::class, 'show'])->name('orders.show');
     Route::delete('/order/{id}', [OrderController::class, 'delete'])->name('order.delete');
 
 });

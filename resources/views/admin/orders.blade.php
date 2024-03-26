@@ -67,7 +67,12 @@
                   <td class="d-flex">
                     <button class="bi bi-eye btn btn-primary me-2 btn-sm" id="modalo" data-bs-toggle="modal" data-bs-target="#viewOrderModal{{$order->id}}"></button>
                     @if ($order->status == 'Unpaid' )
-                      <a href="{{ route('order.show', $order->id) }}" target="_blank" class="bi bi-pencil-square me-2 btn btn-info btn-sm"></a>
+                      <form action="{{ route('orders.show') }}" method="POST">
+                        @csrf
+                        <input type="hidden" value="{{$order->id}}" name="id" />
+                        <button type="submit" class="bi bi-pencil-square me-2 btn btn-info btn-sm"></a>
+                      </form> 
+
                     @endif
 
                     <form id="delete-form-{{$order->id}}" action="{{ route('order.delete', $order->id) }}" method="POST">
