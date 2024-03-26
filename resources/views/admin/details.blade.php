@@ -14,11 +14,11 @@
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Order</h1>
+  <h1>Order Details</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{'dashboard'}}">Dashboard</a></li>
-      <li class="breadcrumb-item active">Order</li>
+      <li class="breadcrumb-item active">Order Details</li>
     </ol>
   </nav>
 </div><!-- End Page Title -->
@@ -109,11 +109,6 @@
                     <div class="form-group col-md-6 mt-2">
                       <label>Amount</label>
                       <input type="text" readonly value="{{ number_format($detail->amount,2) }}" class="form-control">
-                    </div>
-
-                    <div class="form-group col-md-6 mt-2">
-                      <label>Order Date</label>
-                      <input type="text" readonly value="{{ $order->created_at }}" class="form-control">
                     </div>
 
                   </div>
