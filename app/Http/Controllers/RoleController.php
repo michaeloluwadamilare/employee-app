@@ -85,7 +85,7 @@ class RoleController extends Controller
         try {
             // Validate the incoming request data
             $request->validate([
-                'name' => 'required|string|max:255|unique:role,name,' . $role->id,
+                'name' => 'required|string|max:255|unique:roles,name,' . $role->id,
             ]);
         } catch (ValidationException $e) {
             // Return a JSON response with validation errors and status code 422

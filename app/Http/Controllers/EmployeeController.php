@@ -35,10 +35,10 @@ class EmployeeController extends Controller
         try {
             // Validate the incoming request data
             $request->validate([
-                'name' => 'required|unique:roles|max:255',
+                'name' => 'required|max:255',
                 'role_id' => 'required|exists:roles,id',
                 'status' => 'required|in:Fired,Employed',
-                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Employee::class],
+                'email' => ['string', 'lowercase', 'email', 'max:255', 'unique:'.Employee::class],
             ]);
         } catch (ValidationException $e) {
             // Return a JSON response with validation errors and status code 422
@@ -49,7 +49,7 @@ class EmployeeController extends Controller
         }
 
         $employee = new Employee();
-        $employee->name = $request->employee;
+        $employee->name = $request->name;
         $employee->email = $request->email;
         $employee->status = $request->status;
         $employee->role_id = $request->role_id;
@@ -102,12 +102,15 @@ class EmployeeController extends Controller
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        $role->name = $request->name;
+        $employee->name = $request->name;
+        $employee->email = $request->email;
+        $employee->status = $request->status;
+        $employee->role_id = $request->role_id;
 
 
-        $role->save();
+        $employee->save();
         
-        return response()->json(['message' => 'Role updated successfully', 'role' => $role], 200);
+        return response()->json(['message' => 'Role updated successfully', 'role' => $employee], 200);
 
     }
 
