@@ -21,7 +21,8 @@ class RoleFactory extends Factory
 
         $roles = ['manager', 'developer', 'design', 'scrum master'];
     
-        $roleName = $faker->randomElement($roles);
+        $roleName = array_shift($roles);
+
 
         return [
             'name' => $roleName,
