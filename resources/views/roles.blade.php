@@ -31,8 +31,6 @@
       <div class="card">
 
         <div class="card-body">
-          @include('admin.alert')
-
           <h5 class="card-title">Roles</h5>
           
 
@@ -40,15 +38,15 @@
           <table class="table datatable">
             <thead>
               <tr>
+                <th>S/N</th>
                 <th>Role</th>
-                <th>Description</th>
               </tr>
             </thead>
             <tbody>
             @foreach ($roleLists as $v_role)
               <tr>
-                <td>{{$v_role->role_name}}</td>
-                <td>{{$v_role->role_description}}</td>              
+                <td>{{$v_role->id}}</td>
+                <td>{{$v_role->name}}</td>              
               </tr>
             @endforeach
 

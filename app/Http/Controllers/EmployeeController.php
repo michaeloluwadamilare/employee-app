@@ -1,0 +1,127 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Employee;
+use App\Models\Role;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rule;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
+
+
+
+
+
+
+class EmployeeController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $employees = Employee::with('role')->get();
+        return response()->json($employees, Response::HTTP_OK);
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        try {
+            // Validate the incoming request data
+            $request->validate([
+                'name' => 'required|unique:roles|max:255',
+                'role_id' => 'required|exists:roles,id',
+                'status' => 'required|in:Fired,Employed',
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Employee::class],
+            ]);
+        } catch (ValidationException $e) {
+            // Return a JSON response with validation errors and status code 422
+            return response()->json([
+                'error' => 'Validation Error',
+                'message' => $e->validator->errors()->first(),
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $employee = new Employee();
+        $employee->name = $request->employee;
+        $employee->email = $request->email;
+        $employee->status = $request->status;
+        $employee->role_id = $request->role_id;
+
+
+        $employee->save();
+
+        return response()->json($employee, Response::HTTP_CREATED);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $employee = Employee::findOrFail($id);
+
+        if (!$employee) {
+            return response()->json(['message' => 'Employee not found'], 404);
+        }
+    
+        return response()->json(['employee' => $employee], 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $employee = Employee::findOrFail($id);
+
+        if(!$employee){
+            return response()->json(['message' => 'Employee not found'], Response::HTTP_NOT_FOUND);
+
+        }
+
+        try {
+            // Validate the incoming request data
+            $request->validate([
+                'name' => 'required|unique:roles|max:255',
+                'role_id' => 'required|exists:roles,id',
+                'status' => 'required|in:Fired,Employed',
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255',Rule::unique('employees')->ignore($id)],
+            ]);
+        } catch (ValidationException $e) {
+            // Return a JSON response with validation errors and status code 422
+            return response()->json([
+                'error' => 'Validation Error',
+                'message' => $e->validator->errors()->first(),
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $role->name = $request->name;
+
+
+        $role->save();
+        
+        return response()->json(['message' => 'Role updated successfully', 'role' => $role], 200);
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $employee = Role::findOrFail($id);
+        if (!$employee) {
+            return response()->json(['message' => 'Employee not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $employee->delete();
+        return response()->json(['message' => 'Employee deleted'], Response::HTTP_OK);
+    }
+}

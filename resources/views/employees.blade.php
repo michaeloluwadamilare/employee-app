@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Mint Bar and Resturant') }}
+            {{ __('Employee MGT') }}
         </h2>
     </x-slot>
 
@@ -14,11 +14,11 @@
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Orders</h1>
+  <h1>Employees</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{'dashboard'}}">Dashboard</a></li>
-      <li class="breadcrumb-item active">Order List</li>
+      <li class="breadcrumb-item active">Employee List</li>
     </ol>
   </nav>
 </div><!-- End Page Title -->
@@ -42,40 +42,35 @@
           <table class="table datatable">
             <thead>
               <tr>
-                <th>Order Table</th>
-                <th>Amount</th>
-                <th>Order Date</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($orders as $order)
+              @foreach ($employees as $employee)
                 <tr>
-                  <td>{{ $order->table_no }}</td>
-                  <td>{{ number_format($order->total_amount,2) }}</td>  
-                  <td>{{ $order->created_at }}</td>
+                  <td>{{ $employee->name }}</td>
+                  <td>{{ $employee->email }}</td>  
+                  <td>{{ $employee->role->name }}</td>
                   <td>
-                      @if ($order->status == 'Paid')
-                          <label class="badge bg-success">{{ $order->status }}</label>
-                      @elseif( $order->status == 'Unpaid')
-                          <label class="badge bg-warning">{{ $order->status }}</label>
+                      @if ($employee->status == 'Employed')
+                          <label class="badge bg-success">{{ $employee->status }}</label>
                       @else
-                          <label class="badge bg-danger">{{ $order->status }}</label>
+                          <label class="badge bg-danger">{{ $employee->status }}</label>
                       @endif
                   </td>
                   <td class="d-flex">
-                    <button class="bi bi-eye btn btn-primary me-2 btn-sm" id="modalo" data-bs-toggle="modal" data-bs-target="#viewOrderModal{{$order->id}}"></button>
-                    @if ($order->status == 'Unpaid' )
-                      <form action="{{ route('orders.show') }}" method="POST">
+                    <button class="bi bi-eye btn btn-primary me-2 btn-sm" id="modalo" data-bs-toggle="modal" data-bs-target="#viewOrderModal{{$employee->id}}"></button>
+                      <form action="" method="POST">
                         @csrf
-                        <input type="hidden" value="{{$order->id}}" name="id" />
+                        <input type="hidden" value="{{$employee->id}}" name="id" />
                         <button type="submit" class="bi bi-pencil-square me-2 btn btn-info btn-sm"></a>
-                      </form> 
+                      </form>
 
-                    @endif
-
-                    <form id="delete-form-{{$order->id}}" action="{{ route('order.delete', $order->id) }}" method="POST">
+                    <form id="delete-form-{{$employee->id}}" action="{{ route('employee-lists.destroy', $employee->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm bi bi-trash" data-toggle="tooltip" title='Delete'></button>
@@ -83,7 +78,6 @@
                     </form> 
                   </td>
                 </tr>
-                @include('admin.modal.viewOrder')
 
               @endforeach
             </tbody>

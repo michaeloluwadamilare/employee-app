@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Order;
-use App\Models\OrderDetail;
+use App\Models\Employee;
+use App\Models\Role;
 
 
 
@@ -12,8 +12,9 @@ class DashboardController extends Controller
 {
 public function index() {
 
-    $orders = Order::with('orderDetails')->get();
-    return view('admin.dashboard', compact('orders'));
+    $roleCount = Role::count();
+    $employeeCount = Employee::count();
+    return view('dashboard', compact('roleCount','employeeCount'));
 }
 
 }
