@@ -79,7 +79,6 @@ class RoleController extends Controller
 
         if(!$role){
             return response()->json(['message' => 'Role not found'], Response::HTTP_NOT_FOUND);
-
         }
 
         try {

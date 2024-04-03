@@ -110,7 +110,7 @@ class EmployeeController extends Controller
 
         $employee->save();
         
-        return response()->json(['message' => 'Role updated successfully', 'role' => $employee], 200);
+        return response()->json(['message' => 'Employee updated successfully', 'employee' => $employee], 200);
 
     }
 

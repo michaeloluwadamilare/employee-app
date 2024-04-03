@@ -5,9 +5,6 @@ namespace Database\Factories;
 use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
- */
 class RoleFactory extends Factory
 {
     /**
@@ -17,15 +14,26 @@ class RoleFactory extends Factory
      */
     public function definition(): array
     {
-        $faker = \Faker\Factory::create();
-
         $roles = ['manager', 'developer', 'design', 'scrum master'];
-    
-        $roleName = array_shift($roles);
-
+        $roleName = $this->faker->unique()->randomElement($roles);
 
         return [
             'name' => $roleName,
         ];
+    }
+
+    /**
+     * Indicate that the role names should be generated sequentially.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function configure()
+    {
+        return $this->afterMaking(function (Role $role) {
+            static $index = 0;
+            $roles = ['manager', 'developer', 'design', 'scrum master'];
+            $role->name = $roles[$index];
+            $index = ($index + 1) % count($roles);
+        });
     }
 }
